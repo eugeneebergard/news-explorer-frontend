@@ -10,25 +10,28 @@
   <body>
     <div class="page">
       <header class="header">
-        <h3 class="logo">News Explorer</h3>
+        <h3 class="header__title">News Explorer</h3>
         <div class="header__container">
-          <a class="link link-main link-main_place_header">Главная</a>
-          <a class="link link-saved-news">Сохранённые статьи</a>
-          <button class="button button-auth">Авторизация</button>
+          <a class="header__link-main link-main link" href="../">Главная</a>
+          <a class="header__link-articles link">Сохранённые статьи</a>
+          <button class="header__button-auth button">Авторизация</button>
         </div>
       </header>
       <main class="content">
-        <section class="cover">
+        <div class="cover"></div>
+        <section class="capital">
           <form class="search">
             <h1 class="search__title">Что в мире творится?</h1>
             <p class="search__description">Находите самые свежие статьи на любую тему и сохраняйте в своём личном кабинете</p>
-            <input class="search__input">
-            <button class="search__button">Искать</button>
+            <div class="search__container">
+              <input class="search__input input" type="text" placeholder="Введите тему новости">
+              <button class="search__button button">Искать</button>
+            </div>
           </form>
         </section>
         <section class="result"></section>
         <section class="about">
-          <img class="about__author">
+          <img class="about__author" src="<%=require('./images/author.jpg').default%>">
           <div class="about__text">
             <h2 class="about__title">Об авторе</h2>
             <p class="about__description"> Это блок с описанием автора проекта. Здесь следует указать, как вас зовут, чем вы занимаетесь, какими технологиями разработки владеете.</p>
@@ -37,18 +40,18 @@
         </section>
       </main>
       <footer class="footer">
-        <p class="footer__data"></p>
+        <p class="footer__data">2020 Supersite Powered by News API</p>
         <div class="footer__container">
           <div class="footer__links">
-            <a class="link link-main link-main_place_footer">Главная</a>
-            <p class="link link-yandex">Яндекс.Практикум</p>
+            <a class="footer__link-main link-main link">Главная</a>
+            <a class="footer__link-yandex link">Яндекс.Практикум</a>
           </div>
           <div class="footer__social">
-            <a class="link link-icon">
-              <img class="footer__icon">
+            <a class="footer__link-icon link">
+              <img class="footer__icon" src="<%=require('./images/git-icon.svg').default%>">
             </a>
-            <a class="link link-icon">
-              <img class="footer__icon">
+            <a class="footer__link-icon link">
+              <img class="footer__icon" src="<%=require('./images/facebook-icon.svg').default%>">
             </a>
           </div>
         </div>
