@@ -1,7 +1,7 @@
 .search__container {
     display: flex;
     justify-content: center;
-    margin: 64px 0 160px 0;
+    margin: 64px 0 80px 0;
     background-color: white;
     border-radius: 100px;
 }

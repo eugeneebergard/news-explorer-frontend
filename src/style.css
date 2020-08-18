@@ -12,6 +12,7 @@
 @import url(./blocks/search/search.css);
 @import url(./blocks/capital/capital.css);
 @import url(./blocks/about/about.css);
+@import url(./blocks/card/card.css);
 
 .page {
     min-height: 100vh;
@@ -25,5 +26,5 @@
     -moz-text-size-adjust: 100%;
     /* Рендеринг */
     text-rendering: optimizeLegibility;
-    position: relative;
+    /*position: relative; */
 }

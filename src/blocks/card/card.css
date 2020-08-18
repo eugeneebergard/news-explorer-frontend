@@ -1,0 +1,14 @@
+@import url(__title/card__title.css);
+@import url(__image/card__image.css);
+@import url(__description/card__description.css);
+@import url(__content/card__content.css);
+@import url(__data/card__data.css);
+@import url(__publisher/card__publisher.css);
+
+.card {
+    display: block;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    position: relative;
+    cursor: pointer;
+}

@@ -1,0 +1,6 @@
+.result__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 400px);
+    grid-gap: 16px;
+    justify-content: center;
+}

@@ -1,9 +1,6 @@
 .search__input {
-    margin: 0;
     padding: 0 0 0 24px;
     width: 440px;
     height: 64px;
-    border: none;
     border-radius: 100px;
-    outline: none;
 }
