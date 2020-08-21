@@ -1,0 +1,10 @@
+@import url(./__description/saved-articles__description.css);
+@import url(./__title/saved-articles__title.css);
+@import url(./__name/saved-articles__name.css);
+@import url(./__content/saved-articles__content.css);
+
+.saved-articles {
+    width: 100%;
+    background-color: white;
+    padding: 40px 0 56px;
+}

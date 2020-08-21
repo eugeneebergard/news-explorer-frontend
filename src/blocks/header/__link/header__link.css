@@ -1,0 +1,11 @@
+@import url(./_articles/header__link_articles.css);
+@import url(./_main/header__link_main.css);
+@import url(./_state-disabled/_theme/_dark/header__link_state-disabled_theme_dark.css);
+@import url(./_state-disabled/_theme/_light/header__link_state-disabled_theme_light.css);
+@import url(./_theme/_dark/header__link_theme_dark.css);
+@import url(./_theme/_light/header__link_theme_light.css);
+
+.header__link {
+    padding: 27px 0;
+    margin-right: 32px;
+}

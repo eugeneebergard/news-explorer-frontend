@@ -1,0 +1,9 @@
+@import url(./_auth/header__button_auth.css);
+@import url(./_logout/header__button_logout.css);
+@import url(./_theme/_light/header__button_theme_light.css);
+@import url(_theme/_dark/header__button_theme_dark.css);
+
+.header__button {
+    height: 48px;
+    border-radius: 100px;
+}

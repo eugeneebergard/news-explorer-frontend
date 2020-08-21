@@ -1,0 +1,5 @@
+.about__content {
+    display: flex;
+    justify-content: center;
+    padding: 0 104px;
+}

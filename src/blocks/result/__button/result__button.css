@@ -1,5 +1,6 @@
 .result__button {
     display: block;
+    border: none;
     background: #FFFFFF;
     border-radius: 80px;
     margin: 64px auto 0;
