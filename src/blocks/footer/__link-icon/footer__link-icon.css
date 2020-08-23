@@ -5,3 +5,9 @@
 .footer__link-icon:last-child {
     margin: 0;
 }
+
+@media (max-width: 1023px) {
+    .footer__link-icon {
+        margin-right: 26px;
+    }
+}

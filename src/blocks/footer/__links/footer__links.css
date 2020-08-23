@@ -1,5 +1,9 @@
 .footer__links {
-    display: flex;
-    justify-content: space-between;
-    margin: 32px 45px 26px 0;
+    margin-right: 45px;
+}
+
+@media (max-width: 1023px) {
+    .footer__links {
+        margin-right: 28px;
+    }
 }

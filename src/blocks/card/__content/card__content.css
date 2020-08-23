@@ -3,3 +3,11 @@
     max-width: 352px;
     min-height: 260px;
 }
+
+@media (max-width: 1023px) {
+    .card__content {
+        max-width: 192px;
+        min-height: 234px;
+        padding: 16px;
+    }
+}

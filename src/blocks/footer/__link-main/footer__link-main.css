@@ -1,5 +1,11 @@
 .footer__link-main {
-    margin-right: 32px;
+    margin-right: 30px;
     text-align: center;
     color: #1A1B22;
+}
+
+@media (max-width: 1023px) {
+    .footer__link-main {
+        margin-right: 24px;
+    }
 }

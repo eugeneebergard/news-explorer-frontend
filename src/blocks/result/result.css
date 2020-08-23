@@ -7,3 +7,9 @@
     width: 100%;
     padding: 80px 0;
 }
+
+@media (max-width: 1023px) {
+    .result {
+        padding: 40px 0;
+    }
+}

@@ -9,3 +9,9 @@
     padding: 27px 0;
     margin-right: 32px;
 }
+
+@media (max-width: 1023px) {
+    .header__link {
+        margin-right: 16px;
+    }
+}

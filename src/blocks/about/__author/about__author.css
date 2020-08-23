@@ -1,6 +1,14 @@
 .about__author {
     max-width: 40%;
     max-height: 20%;
-    margin: 80px 0 80px;
+    margin: 80px 0;
     border-radius: 1000px;
+}
+
+@media (max-width: 1023px) {
+    .about__author {
+        max-width: 232px;
+        max-height: 232px;
+        margin: 61px 0;
+    }
 }

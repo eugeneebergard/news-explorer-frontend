@@ -2,3 +2,10 @@
     max-width: 600px;
     margin: 131px 0 0 56px;
 }
+
+@media (max-width: 1023px) {
+    .about__text {
+        max-width: 424px;
+        margin: 40px 0 0 32px;
+    }
+}
