@@ -17,7 +17,7 @@
   "bugs": {
     "url": "https://github.com/eugeneebergard/news-explorer-frontend/issues"
   },
-  "homepage": "https://github.com/eugeneebergard/news-explorer-frontend#readme",
+  "homepage": "https://eugeneebergard.github.io/news-explorer-frontend/",
   "devDependencies": {
     "@babel/cli": "^7.10.1",
     "@babel/core": "^7.10.1",
