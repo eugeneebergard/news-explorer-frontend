@@ -15,7 +15,6 @@ const buttonOpenMenu = document.querySelector('.header__mobile-menu_open');
 const buttonCloseMenu = document.querySelector('.header__mobile-menu_close');
 
 const mobileMenu = document.querySelector('.header__mobile-menu');
-const desktopMenu = document.querySelector('.header__border');
 
 buttonOpenAuth.addEventListener('click', () => {
   popupAuth.classList.add('popup_is-opened');
@@ -41,12 +40,10 @@ buttonCloseSignup.addEventListener('click', () => {
 
 buttonOpenMenu.addEventListener('click', () => {
   mobileMenu.classList.add('header__mobile-menu_show');
-  desktopMenu.classList.add('header__border_hidden');
 });
 
 buttonCloseMenu.addEventListener('click', () => {
   mobileMenu.classList.remove('header__mobile-menu_show');
-  desktopMenu.classList.remove('header__border_hidden');
 });
 
 

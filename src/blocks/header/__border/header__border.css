@@ -2,7 +2,6 @@
 @import url(./_theme/_dark/header__border_theme_dark.css);
 @import url(./_open/header__border_open.css);
 @import url(./_mobile-menu/header__border_mobile-menu.css);
-@import url(./_hidden/header__border_hidden.css);
 
 
 .header__border {
