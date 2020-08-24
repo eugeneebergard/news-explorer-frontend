@@ -9,33 +9,74 @@
 </head>
 <body>
 <div class="page">
-  <header class="header header_theme_dark">
-    <h3 class="header__title header__title_theme_dark">News Explorer</h3>А
-    <div class="header__container">
-      <a class="
-            header__link
-            header__link_theme_dark
-            header__link_state-disabled_theme_dark
-            header__link_main
-            link" href="../">Главная</a>
-      <a class="
-            header__link
-            header__link_theme_dark
-            header__link_articles
-            link" href="./articles">Сохранённые статьи</a>
-      <button class="
-            header__button
-            header__button_theme_dark
-            header__button_auth
-            button">Авторизация
-      </button>
-      <button class="
-            header__button
-            header__button_theme_dark
-            header__button_logout
-            button">Грета<img class="button__logout-svg" alt="Выход" src="<%=require('./images/logout_theme_dark.svg').default%>">
-      </button>
+  <header class="header">
+    <div class="header__border header__border_theme_dark">
+      <h3 class="header__title header__title_theme_dark">News Explorer</h3>
+      <img src="<%=require('./images/menu.svg').default%>" alt="" class="header__mobile-menu_open">
+      <nav class="header__container">
+        <a class="
+              header__link
+              header__link_theme_dark
+              header__link_state-disabled_theme_dark
+              header__link_main
+              link" href="../">Главная</a>
+        <a class="
+              header__link
+              header__link_theme_dark
+              header__link_articles
+              link" href="./articles">Сохранённые статьи</a>
+        <button class="
+              header__button
+              header__button_theme_dark
+              header__button_auth
+              button">Авторизация
+        </button>
+        <button class="
+              header__button
+              header__button_theme_dark
+              header__button_logout
+              button">Грета<img class="button__logout-svg" alt="Выход" src="<%=require('./images/logout_theme_dark.svg').default%>">
+        </button>
+      </nav>
     </div>
+    <nav class="header__mobile-menu">
+      <div class="header__border header__border_mobile-menu header__border_theme_dark">
+        <h3 class="header__title header__title_theme_dark">News Explorer</h3>
+        <img src="<%=require('./images/close.svg').default%>" alt="" class="header__mobile-menu_close">
+      </div>
+      <ul class="header__list">
+        <li class="header__item">
+          <a class="
+                header__link
+                header__link_theme_dark
+                header__link_main
+                link" href="../">Главная</a>
+        </li>
+        <li class="header__item">
+          <a class="
+                header__link
+                header__link_theme_dark
+                header__link_articles
+                link" href="./articles">Сохранённые статьи</a>
+        </li>
+        <li class="header__item">
+          <button class="
+                header__button
+                header__button_theme_dark
+                header__button_auth
+                button">Авторизация
+          </button>
+        </li>
+        <li class="header__item">
+          <button class="
+                header__button
+                header__button_theme_dark
+                header__button_logout
+                button">Грета<img class="button__logout-svg" alt="Выход" src="<%=require('./images/logout_theme_dark.svg').default%>">
+          </button>
+        </li>
+      </ul>
+    </nav>
   </header>
   <main class="content">
     <div class="cover"></div>

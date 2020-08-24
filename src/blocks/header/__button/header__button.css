@@ -13,3 +13,12 @@
         height: 40px;
     }
 }
+
+@media (max-width: 700px) {
+    .header__button {
+        display: block;
+        height: 56px;
+        width: 288px;
+        margin: 0 auto;
+    }
+}
