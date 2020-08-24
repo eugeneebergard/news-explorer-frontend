@@ -1,4 +1,8 @@
 .card__description {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+    overflow: hidden;
     margin: 16px 0 0;
     font-family: Roboto, Arial, sans-serif;
     font-style: normal;
@@ -12,5 +16,12 @@
     .card__description {
         margin: 12px 0 0;
         line-height: 22px;
+        -webkit-line-clamp: 4;
+    }
+}
+
+@media (max-width: 700px) {
+    .card__description {
+        -webkit-line-clamp: 3;
     }
 }

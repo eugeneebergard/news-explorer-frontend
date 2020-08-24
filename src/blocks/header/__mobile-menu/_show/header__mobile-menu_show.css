@@ -1,3 +1,6 @@
-.header__mobile-menu.header__mobile-menu_show {
-    display: block;
+@media (max-width: 700px) {
+    .header__mobile-menu.header__mobile-menu_show {
+        display: block;
+    }
 }
+

@@ -1,4 +1,7 @@
 .card__title {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
     max-width: 1280px;
     margin: 12px 0 16px;
     font-family: Roboto Slab, Arial, sans-serif;
@@ -14,5 +17,6 @@
         margin: 12px 0 10px;
         font-size: 22px;
         line-height: 24px;
+        -webkit-line-clamp: 3;
     }
 }

@@ -21,3 +21,10 @@
   z-index: 20;
   display: none;
 }
+
+@media (max-width: 700px) {
+  .popup {
+    background-color: inherit;
+    top: 40px;
+  }
+}

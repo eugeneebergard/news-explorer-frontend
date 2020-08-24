@@ -6,6 +6,7 @@
     background-size: cover;
     background-position: center;
     position: absolute;
+    background-attachment: fixed;
     top: 0;
     z-index: -1;
 }

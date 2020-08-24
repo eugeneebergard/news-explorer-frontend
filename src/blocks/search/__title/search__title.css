@@ -18,3 +18,10 @@
         line-height: 40px;
     }
 }
+
+@media (max-width: 700px) {
+    .search__title {
+        margin: 30px 0 16px;
+        max-width: 285px;
+    }
+}

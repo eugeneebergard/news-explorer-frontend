@@ -11,3 +11,10 @@
         height: 56px;
     }
 }
+
+@media (max-width: 700px) {
+    .search__input {
+        width: 264px;
+        margin: 0 auto 16px;
+    }
+}

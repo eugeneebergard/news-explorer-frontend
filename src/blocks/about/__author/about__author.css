@@ -12,3 +12,11 @@
         margin: 61px 0;
     }
 }
+
+@media (max-width: 700px) {
+    .about__author {
+        max-width: 272px;
+        max-height: 272px;
+        margin: 32px 0 0;
+    }
+}

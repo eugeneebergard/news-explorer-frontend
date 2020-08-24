@@ -6,13 +6,19 @@
     font-weight: bold;
     font-size: 16px;
     line-height: 20px;
-    letter-spacing: .4px;
+    letter-spacing: 0.4px;
     text-transform: uppercase;
     color: #B6BCBF;
 }
 
 @media (max-width: 1023px) {
     .card__publisher {
-        top: 500px
+        top: 390px
+    }
+}
+
+@media (max-width: 700px) {
+    .card__publisher {
+        top: 410px
     }
 }

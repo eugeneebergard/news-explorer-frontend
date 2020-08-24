@@ -9,3 +9,10 @@
         margin-right: 24px;
     }
 }
+
+@media (max-width: 700px) {
+    .footer__link-main {
+        margin: 0 0 20px;
+    }
+}
+

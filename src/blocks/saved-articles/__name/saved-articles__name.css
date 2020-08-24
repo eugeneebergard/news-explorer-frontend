@@ -13,3 +13,9 @@
         line-height: 24px;
     }
 }
+
+@media (max-width: 700px) {
+    .saved-articles__name {
+        font-size: 14px;
+    }
+}

@@ -6,7 +6,8 @@ const popupSignup = document.querySelector('.popup_type_signup');
 const popupLinkSignup = document.querySelector('.popup__link_signup');
 const popupLinkAuth = document.querySelector('.popup__link_auth');
 
-const buttonOpenAuth = document.querySelector('.header__button_auth');
+const buttonOpenAuthDesktop = document.getElementById('auth-desk')
+const buttonOpenAuthMobile = document.getElementById('auth-mobile')
 
 const buttonCloseAuth = document.querySelector('.popup__close_type_auth');
 const buttonCloseSignup = document.querySelector('.popup__close_type_signup');
@@ -16,7 +17,11 @@ const buttonCloseMenu = document.querySelector('.header__mobile-menu_close');
 
 const mobileMenu = document.querySelector('.header__mobile-menu');
 
-buttonOpenAuth.addEventListener('click', () => {
+buttonOpenAuthMobile.addEventListener('click', () => {
+  popupAuth.classList.add('popup_is-opened');
+});
+
+buttonOpenAuthDesktop.addEventListener('click', () => {
   popupAuth.classList.add('popup_is-opened');
 });
 

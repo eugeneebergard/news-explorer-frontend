@@ -1,3 +1,9 @@
 .footer__icon {
     margin-top: 4px;
 }
+
+@media (max-width: 700px) {
+    .footer__icon {
+        margin: 0;
+    }
+}
