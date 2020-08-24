@@ -13,7 +13,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].[name].js',
+    filename: '[name].[chunkhash].js',
   },
   module: {
     rules: [
@@ -70,12 +70,14 @@ module.exports = {
       template: './src/index.html',
       filename: 'index.html',
       inject: false,
+      minify: false,
       chunks: ['main']
     }),
     new HtmlWebpackPlugin({
       template: './src/articles/index.html',
       filename: 'articles/index.html',
       inject: false,
+      minify: false,
       chunks: ['articles']
     }),
     new WebpackMd5Hash(),
