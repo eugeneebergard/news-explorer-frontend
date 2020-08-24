@@ -1,4 +1,4 @@
-import './style.css';
+import '../css/style.css';
 
 const popupAuth = document.querySelector('.popup_type_auth');
 const popupSignup = document.querySelector('.popup_type_signup');

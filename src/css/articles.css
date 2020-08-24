@@ -1,12 +1,12 @@
-@import url(../vendor/normalize.css);
-@import url(../vendor/fonts.css);
-@import url(../blocks/header/header.css);
-@import url(../blocks/link/link.css);
-@import url(../blocks/button/button.css);
-@import url(../blocks/result/result.css);
-@import url(../blocks/card/card.css);
-@import url(../blocks/footer/footer.css);
-@import url(../blocks/saved-articles/saved-articles.css);
+@import url('../vendor/normalize.css');
+@import url('../vendor/fonts.css');
+@import url('../blocks/header/header.css');
+@import url('../blocks/link/link.css');
+@import url('../blocks/button/button.css');
+@import url('../blocks/result/result.css');
+@import url('../blocks/card/card.css');
+@import url('../blocks/footer/footer.css');
+@import url('../blocks/saved-articles/saved-articles.css');
 
 .page {
     min-height: 100vh;
