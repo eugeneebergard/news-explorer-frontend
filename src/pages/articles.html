@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Articles</title>
+  <link rel="shortcut icon" href="<%=require('../images/meta.png').default%>">
   <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.css %>">
 </head>
 <body>
@@ -12,7 +13,7 @@
   <header class="header">
     <div class="header__border header__border_theme_light">
       <h3 class="header__title header__title_theme_light">News Explorer</h3>
-      <img src="<%=require('../images/menu_light.svg').default%>" alt="" class="header__mobile-menu_open">
+      <img src="<%=require('../images/menu_light.svg').default%>" alt="Открыть меню" class="header__mobile-menu_open">
       <nav class="header__container">
         <a class="
               header__link
@@ -35,14 +36,15 @@
               header__button
               header__button_theme_light
               header__button_logout
-              button">Грета<img class="button__logout-svg" alt="Выход" src="<%=require('../images/logout_theme_light.svg').default%>">
+              button">Грета<img class="button__logout-svg" alt="Выход"
+                                src="<%=require('../images/logout_theme_light.svg').default%>">
         </button>
       </nav>
     </div>
     <nav class="header__mobile-menu">
       <div class="header__border header__border_mobile-menu header__border_theme_light">
         <h3 class="header__title header__title_theme_dark">News Explorer</h3>
-        <img src="<%=require('../images/close-menu.svg').default%>" alt="" class="header__mobile-menu_close">
+        <img src="<%=require('../images/close-menu.svg').default%>" alt="Закрыть" class="header__mobile-menu_close">
       </div>
       <ul class="header__list">
         <li class="header__item">
@@ -72,7 +74,8 @@
                 header__button
                 header__button_theme_dark
                 header__button_logout
-                button">Грета<img class="button__logout-svg" alt="Выход" src="<%=require('../images/logout_theme_dark.svg').default%>">
+                button">Грета<img class="button__logout-svg" alt="Выход"
+                                  src="<%=require('../images/logout_theme_dark.svg').default%>">
           </button>
         </li>
       </ul>

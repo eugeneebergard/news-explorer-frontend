@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>News Explorer</title>
+  <link rel="shortcut icon" href="<%=require('../images/meta.png').default%>">
   <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.css %>">
 </head>
 <body>
@@ -12,7 +13,7 @@
   <header class="header">
     <div class="header__border header__border_theme_dark">
       <h3 class="header__title header__title_theme_dark">News Explorer</h3>
-      <img src="<%=require('../images/menu_dark.svg').default%>" alt="" class="header__mobile-menu_open">
+      <img src="<%=require('../images/menu_dark.svg').default%>" alt="Открыть меню" class="header__mobile-menu_open">
       <nav class="header__container">
         <a class="
               header__link
@@ -35,14 +36,15 @@
               header__button
               header__button_theme_dark
               header__button_logout
-              button">Грета<img class="button__logout-svg" alt="Выход" src="<%=require('../images/logout_theme_dark.svg').default%>">
+              button">Грета<img class="button__logout-svg" alt="Выход"
+                                src="<%=require('../images/logout_theme_dark.svg').default%>">
         </button>
       </nav>
     </div>
     <nav class="header__mobile-menu">
       <div class="header__border header__border_mobile-menu header__border_theme_dark">
         <h3 class="header__title header__title_theme_dark">News Explorer</h3>
-        <img src="<%=require('../images/close-menu.svg').default%>" alt="" class="header__mobile-menu_close">
+        <img src="<%=require('../images/close-menu.svg').default%>" alt="Закрыть" class="header__mobile-menu_close">
       </div>
       <ul class="header__list">
         <li class="header__item">
@@ -69,7 +71,8 @@
                 header__button
                 header__button_theme_dark
                 header__button_logout
-                button">Грета<img class="button__logout-svg" alt="Выход" src="<%=require('../images/logout_theme_dark.svg').default%>">
+                button">Грета<img class="button__logout-svg" alt="Выход"
+                                  src="<%=require('../images/logout_theme_dark.svg').default%>">
         </button>
       </ul>
     </nav>
@@ -130,6 +133,13 @@
       </div>
       <button class="result__button button">Показать ещё</button>
     </section>
+    <section class="not-found">
+      <div class="not-found__container">
+        <img class="not-found__image" src="<%=require('../images/not-found.svg').default%>">
+        <h3 class="not-found__heading">Ничего не найдено</h3>
+        <p class="not-found__text">К сожалению по вашему запросу ничего не найдено.</p>
+      </div>
+    </section>
     <section class="about">
       <div class="about__content">
         <img class="about__author" src="<%=require('../images/author.png').default%>">
@@ -149,36 +159,48 @@
 
     <div class="popup popup_type_auth">
       <div class="popup__content">
-        <img src="<%=require('../images/close.svg').default%>" alt="" class="popup__close popup__close_type_auth">
+        <img src="<%=require('../images/close.svg').default%>" alt="Закрыть" class="popup__close popup__close_type_auth">
         <h3 class="popup__title">Вход</h3>
         <form class="popup__form popup__form_type_auth" name="auth">
           <label for="auth-email" class="popup__label">Email</label>
-          <input id="auth-email" type="email" name="auth-email" class="popup__input popup__input_type_email-auth input" required placeholder="Введите почту" minlength="2" maxlength="30">
-          <span id="error-email-auth" class = "error"></span>
+          <input id="auth-email" type="email" name="auth-email" class="popup__input popup__input_type_email-auth input"
+                 required placeholder="Введите почту" minlength="2" maxlength="30">
+          <span id="error-email-auth" class="error"></span>
           <label for="auth-password" class="popup__label">Пароль</label>
-          <input id="auth-password" type="text" name="auth-password" class="popup__input popup__input_type_password-auth input" required placeholder="Введите пароль" minlength="2">
-          <span id="error-password-auth" class = "error"></span>
+          <input id="auth-password" type="text" name="auth-password"
+                 class="popup__input popup__input_type_password-auth input" required placeholder="Введите пароль"
+                 minlength="2">
+          <span id="error-password-auth" class="error"></span>
           <button id="submitAuth" type="submit" class="button popup__button popup__button_type_auth">Войти</button>
         </form>
-        <span class="popup__or popup__or_signup">или <a class="link popup__link popup__link_signup">Зарегистрироваться</a></span>
+        <span class="popup__or popup__or_signup">или <a
+          class="link popup__link popup__link_signup">Зарегистрироваться</a></span>
       </div>
     </div>
 
     <div class="popup popup_type_signup">
       <div class="popup__content">
-        <img src="<%=require('../images/close.svg').default%>" alt="" class="popup__close popup__close_type_signup">
+        <img src="<%=require('../images/close.svg').default%>" alt="Закрыть" class="popup__close popup__close_type_signup">
         <h3 class="popup__title">Регистрация</h3>
         <form class="popup__form popup__form_type_signup" name="signup">
           <label for="signup-email" class="popup__label">Email</label>
-          <input id="signup-email" type="email" name="signup-email" class="popup__input popup__input_type_email-signup input" required placeholder="Введите почту" minlength="2" maxlength="30">
-          <span id="error-email-signup" class = "error"></span>
+          <input id="signup-email" type="email" name="signup-email"
+                 class="popup__input popup__input_type_email-signup input" required placeholder="Введите почту"
+                 minlength="2" maxlength="30">
+          <span id="error-email-signup" class="error"></span>
           <label for="signup-password" class="popup__label">Пароль</label>
-          <input id="signup-password" type="text" name="signup-password" class="popup__input popup__input_type_password-signup input" required placeholder="Введите пароль" minlength="2">
-          <span id="error-password-signup" class = "error"></span>
+          <input id="signup-password" type="text" name="signup-password"
+                 class="popup__input popup__input_type_password-signup input" required placeholder="Введите пароль"
+                 minlength="2">
+          <span id="error-password-signup" class="error"></span>
           <label for="signup-name" class="popup__label">Имя</label>
-          <input id="signup-name" type="text" name="signup-name" class="popup__input popup__input_type_name-signup input" required placeholder="Введите своё имя" minlength="2">
-          <span id="error-name-signup" class = "error"></span>
-          <button id="submitSignup" type="submit" class="button popup__button popup__button_type_signup">Зарегистрироваться</button>
+          <input id="signup-name" type="text" name="signup-name"
+                 class="popup__input popup__input_type_name-signup input" required placeholder="Введите своё имя"
+                 minlength="2">
+          <span id="error-name-signup" class="error"></span>
+          <button id="submitSignup" type="submit" class="button popup__button popup__button_type_signup">
+            Зарегистрироваться
+          </button>
         </form>
         <span class="popup__or popup__or_auth">или <a class="link popup__link popup__link_auth">Войти</a></span>
       </div>

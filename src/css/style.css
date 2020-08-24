@@ -14,6 +14,7 @@
 @import url('../blocks/card/card.css');
 @import url('../blocks/popup/popup.css');
 @import url('../blocks/error/error.css');
+@import url('../blocks/not-found/not-found.css');
 
 .page {
     min-height: 100vh;
@@ -27,5 +28,4 @@
     -moz-text-size-adjust: 100%;
     /* Рендеринг */
     text-rendering: optimizeLegibility;
-    /*position: relative; */
 }
