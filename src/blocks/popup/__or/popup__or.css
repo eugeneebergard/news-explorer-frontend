@@ -1,0 +1,14 @@
+@import url(./_auth/popup__or_auth.css);
+@import url(./_signup/popup__or_signup.css);
+
+.popup__or {
+    display: block;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    color: black;
+    margin: 16px auto 0;
+}

@@ -1,0 +1,11 @@
+@import url(./_theme/_dark/header__title_theme_dark.css);
+@import url(./_theme/_light/header__title_theme_light.css);
+
+.header__title {
+    margin: 0;
+    font-family: "Roboto Slab", arial, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 24px;
+}

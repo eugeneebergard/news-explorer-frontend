@@ -1,0 +1,22 @@
+.about__author {
+    max-width: 40%;
+    max-height: 20%;
+    margin: 80px 0;
+    border-radius: 1000px;
+}
+
+@media (max-width: 1023px) {
+    .about__author {
+        max-width: 232px;
+        max-height: 232px;
+        margin: 61px 0;
+    }
+}
+
+@media (max-width: 700px) {
+    .about__author {
+        max-width: 272px;
+        max-height: 272px;
+        margin: 32px 0 0;
+    }
+}

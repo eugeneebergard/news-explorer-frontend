@@ -1,0 +1,20 @@
+.search__input {
+    padding: 0 0 0 24px;
+    width: 440px;
+    height: 64px;
+    border-radius: 100px;
+}
+
+@media (max-width: 1023px) {
+    .search__input {
+        width: 292px;
+        height: 56px;
+    }
+}
+
+@media (max-width: 700px) {
+    .search__input {
+        width: 264px;
+        margin: 0 auto 16px;
+    }
+}

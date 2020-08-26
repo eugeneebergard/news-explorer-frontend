@@ -1,0 +1,7 @@
+.header__button.header__button_logout {
+    width: 112px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}

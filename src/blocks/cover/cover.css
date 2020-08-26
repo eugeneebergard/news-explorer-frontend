@@ -1,0 +1,12 @@
+.cover {
+    min-width: 100%;
+    min-height: 576px;
+    background-image: url('../../images/overlay.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    background-attachment: fixed;
+    top: 0;
+    z-index: -1;
+}

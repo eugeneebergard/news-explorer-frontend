@@ -1,0 +1,22 @@
+@import url(./__description/saved-articles__description.css);
+@import url(./__title/saved-articles__title.css);
+@import url(./__name/saved-articles__name.css);
+@import url(./__content/saved-articles__content.css);
+
+.saved-articles {
+    width: 100%;
+    background-color: white;
+    padding: 40px 0 56px;
+}
+
+@media (max-width: 1023px) {
+    .saved-articles {
+        padding: 24px 0 32px;
+    }
+}
+
+@media (max-width: 700px) {
+    .saved-articles {
+        padding: 10px 0 32px;
+    }
+}
