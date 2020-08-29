@@ -79,6 +79,7 @@
   </header>
   <main class="content">
     <div class="cover"></div>
+
     <section class="capital">
       <form class="search">
         <h1 class="search__title">Что в мире творится?</h1>
@@ -90,6 +91,7 @@
         </div>
       </form>
     </section>
+
     <section class="result">
       <h2 class="result__title">Результаты поиска</h2>
       <div class="result__list">
@@ -133,6 +135,7 @@
       </div>
       <button class="result__button button">Показать ещё</button>
     </section>
+
     <section class="not-found">
       <div class="not-found__container">
         <img class="not-found__image" src="<%=require('../images/not-found.svg').default%>">
@@ -163,14 +166,13 @@
         <h3 class="popup__title">Вход</h3>
         <form class="popup__form popup__form_type_auth" name="auth">
           <label for="auth-email" class="popup__label">Email</label>
-          <input id="auth-email" type="email" name="auth-email" class="popup__input popup__input_type_email-auth input"
-                 required placeholder="Введите почту" minlength="2" maxlength="30">
-          <span id="error-email-auth" class="error"></span>
+          <input id="auth-email" type="email" name="auth-email" class="popup__input popup__input_type_email-auth input email"
+                 required placeholder="Введите почту">
+          <span id="error-auth-email" class="error"></span>
           <label for="auth-password" class="popup__label">Пароль</label>
-          <input id="auth-password" type="text" name="auth-password"
-                 class="popup__input popup__input_type_password-auth input" required placeholder="Введите пароль"
-                 minlength="2">
-          <span id="error-password-auth" class="error"></span>
+          <input id="auth-password" type="password" name="auth-password"
+                 class="popup__input popup__input_type_password-auth input" required placeholder="Введите пароль">
+          <span id="error-auth-password" class="error"></span>
           <button id="submitAuth" type="submit" class="button popup__button popup__button_type_auth">Войти</button>
         </form>
         <span class="popup__or popup__or_signup">или <a
@@ -185,19 +187,17 @@
         <form class="popup__form popup__form_type_signup" name="signup">
           <label for="signup-email" class="popup__label">Email</label>
           <input id="signup-email" type="email" name="signup-email"
-                 class="popup__input popup__input_type_email-signup input" required placeholder="Введите почту"
-                 minlength="2" maxlength="30">
-          <span id="error-email-signup" class="error"></span>
+                 class="popup__input popup__input_type_email-signup input email" required placeholder="Введите почту">
+          <span id="error-signup-email" class="error"></span>
           <label for="signup-password" class="popup__label">Пароль</label>
-          <input id="signup-password" type="text" name="signup-password"
+          <input id="signup-password" type="password" name="signup-password"
                  class="popup__input popup__input_type_password-signup input" required placeholder="Введите пароль"
                  minlength="2">
-          <span id="error-password-signup" class="error"></span>
+          <span id="error-signup-password" class="error"></span>
           <label for="signup-name" class="popup__label">Имя</label>
           <input id="signup-name" type="text" name="signup-name"
-                 class="popup__input popup__input_type_name-signup input" required placeholder="Введите своё имя"
-                 minlength="2">
-          <span id="error-name-signup" class="error"></span>
+                 class="popup__input popup__input_type_name-signup input" required placeholder="Введите своё имя">
+          <span id="error-signup-name" class="error"></span>
           <button id="submitSignup" type="submit" class="button popup__button popup__button_type_signup">
             Зарегистрироваться
           </button>
