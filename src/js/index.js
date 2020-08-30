@@ -33,14 +33,17 @@ const buttonOpenMenu = document.querySelector('.header__mobile-menu_open');
 const buttonCloseMenu = document.querySelector('.header__mobile-menu_close');
 // Меню мобильной версии
 const mobileMenu = document.querySelector('.header__mobile-menu');
+// Элементы поведения header
+const buttonLogout = document.querySelector('.header__button_logout');
+const linkArticles = document.querySelector('.header__link_articles');
 
 // Передача опций классам
+const mainApi = new MainApi(options);
 const statePopupAuth = new Popup(popupAuth);
 const statePopupSignup = new Popup(popupSignup);
-const stateMobileMenu = new Header(mobileMenu);
+const stateHeader = new Header(mobileMenu, linkArticles, buttonLogout, buttonOpenAuthDesktop);
 const formValidatorAuth = new Form(formAuth, submitAuth, validMessage);
 const formValidatorSignup = new Form(formSignup, submitSignup, validMessage);
-const mainApi = new MainApi(options);
 
 // Слушатели событий
 
@@ -83,11 +86,11 @@ buttonCloseSignup.addEventListener('click', () => {
 });
 
 buttonOpenMenu.addEventListener('click', () => {
-  stateMobileMenu.showMenu();
+  stateHeader.showMenu();
 });
 
 buttonCloseMenu.addEventListener('click', () => {
-  stateMobileMenu.hideMenu();
+  stateHeader.hideMenu();
 });
 
 submitSignup.addEventListener('click', (event) => {
@@ -98,16 +101,12 @@ submitSignup.addEventListener('click', (event) => {
   const name = document.querySelector('.popup__input_type_name-signup');
   const user = { email: email.value, name: name.value, password: password.value };
 
-  submitSignup.textContent = 'Загрузка...';
-
   mainApi.signup(user)
-    .then((res) => {
-      submitSignup.textContent = 'Зарегистрироваться';
+    .then(() => {
+      statePopupSignup.close();
+      formSignup.reset();
     })
     .catch((err) => console.log(err));
-
-  formSignup.reset();
-  statePopupSignup.close();
 });
 
 submitAuth.addEventListener('click', (event) => {
@@ -117,17 +116,25 @@ submitAuth.addEventListener('click', (event) => {
   const password = document.querySelector('.popup__input_type_password-auth');
   const user = { email: email.value, password: password.value };
 
-  submitAuth.textContent = 'Загрузка...';
-
   mainApi.signin(user)
     .then((res) => {
-      submitAuth.textContent = 'Зарегистрироваться';
+      mainApi.getUserData()
+        .then((res) => localStorage.setItem('username', res.name))
+        .catch((err) => console.log(err));
+      localStorage.setItem('jwtToken', res.token);
+      stateHeader.render();
+      statePopupAuth.close();
+      formAuth.reset();
     })
     .catch((err) => console.log(err));
-
-  formAuth.reset();
-  statePopupAuth.close();
 });
+
+buttonLogout.addEventListener('click', () => {
+  localStorage.clear();
+  stateHeader.render();
+});
+
+stateHeader.render();
 
 
 

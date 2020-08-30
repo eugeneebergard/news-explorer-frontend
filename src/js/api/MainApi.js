@@ -37,27 +37,55 @@ export default class Api {
       }),
     })
       .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
+        if (res.ok) return res.json();
 
         return Promise.reject(new TypeError(`Ошибка: ${res.status}`));
       });
   }
 
   getUserData() {
+    return fetch(`${this.options.baseUrl}/users/me`, {
+      headers: this.options.headers,
+    })
+      .then((res) => {
+        if (res.ok) return res.json();
 
+        return Promise.reject(new TypeError(`Ошибка: ${res.status}`));
+      });
   }
 
   getArticles() {
+    return fetch(`${this.options.baseUrl}/articles`, {
+      headers: this.options.headers,
+    })
+      .then((res) => {
+        if (res.ok) return res.json();
 
+        return Promise.reject(new TypeError(`Ошибка: ${res.status}`));
+      });
   }
 
   createArticle() {
+    return fetch(`${this.options.baseUrl}/articles`, {
+      method: 'POST',
+      headers: this.options.headers,
+    })
+      .then((res) => {
+        if (res.ok) return res.json();
 
+        return Promise.reject(new TypeError(`Ошибка: ${res.status}`));
+      });
   }
 
-  removeArticle() {
+  removeArticle(id) {
+    return fetch(`${this.options.baseUrl}/articles${id}`, {
+      method: 'DELETE',
+      headers: this.options.headers,
+    })
+      .then((res) => {
+        if (res.ok) return res.json();
 
+        return Promise.reject(new TypeError(`Ошибка: ${res.status}`));
+      });
   }
 }

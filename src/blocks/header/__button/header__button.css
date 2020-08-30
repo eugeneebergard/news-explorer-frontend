@@ -4,6 +4,7 @@
 @import url(_theme/_dark/header__button_theme_dark.css);
 
 .header__button {
+    display: block;
     height: 48px;
     border-radius: 100px;
 }
@@ -16,7 +17,6 @@
 
 @media (max-width: 700px) {
     .header__button {
-        display: block;
         height: 56px;
         width: 288px;
         margin: 0 auto;

@@ -1,4 +1,7 @@
-.header__button_auth {
+@import url('./_active/header__button_auth_active.css');
+
+.header__button.header__button_auth {
+    display: none;
     width: 176px;
 }
 

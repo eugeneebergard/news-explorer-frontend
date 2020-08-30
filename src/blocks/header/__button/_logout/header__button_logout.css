@@ -1,7 +1,8 @@
+@import url('./_active/header__button_logout_active.css');
+
 .header__button.header__button_logout {
     width: 112px;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
-    display: none;
 }
