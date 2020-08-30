@@ -10,6 +10,7 @@ export default class Api {
 
     return fetch(`${this.options.baseUrl}/signup`, {
       method: 'POST',
+      headers: this.options.headers,
       body: JSON.stringify({
         email,
         password,
@@ -23,8 +24,25 @@ export default class Api {
       });
   }
 
-  signin() {
+  signin(user) {
+    const { email } = user;
+    const { password } = user;
 
+    return fetch(`${this.options.baseUrl}/signin`, {
+      method: 'POST',
+      headers: this.options.headers,
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+
+        return Promise.reject(new TypeError(`Ошибка: ${res.status}`));
+      });
   }
 
   getUserData() {

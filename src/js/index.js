@@ -5,6 +5,8 @@ import Popup from './components/Popup';
 import Form from './components/Form';
 import Header from './components/Header';
 import MainApi from "./api/MainApi";
+// Импорт констант
+const { validMessage, options } = require('./constants/constans');
 
 // Обращение к DOM дереву
 
@@ -31,18 +33,7 @@ const buttonOpenMenu = document.querySelector('.header__mobile-menu_open');
 const buttonCloseMenu = document.querySelector('.header__mobile-menu_close');
 // Меню мобильной версии
 const mobileMenu = document.querySelector('.header__mobile-menu');
-// Объект с сообщениями об ошибке
-const validMessage = {
-  validationEmpty: "Это поле обязательное",
-  validationEmail: "email в формате example@gmail.com",
-};
-// Набор опций для API запросов
-const options = {
-  baseUrl: NODE_ENV === 'development' ? 'http://api.news-explorer-ee.tk' : 'https://api.news-explorer-ee.tk',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-};
+
 // Передача опций классам
 const statePopupAuth = new Popup(popupAuth);
 const statePopupSignup = new Popup(popupSignup);
@@ -117,6 +108,25 @@ submitSignup.addEventListener('click', (event) => {
 
   formSignup.reset();
   statePopupSignup.close();
+});
+
+submitAuth.addEventListener('click', (event) => {
+  event.preventDefault();
+
+  const email = document.querySelector('.popup__input_type_email-auth');
+  const password = document.querySelector('.popup__input_type_password-auth');
+  const user = { email: email.value, password: password.value };
+
+  submitAuth.textContent = 'Загрузка...';
+
+  mainApi.signin(user)
+    .then((res) => {
+      submitAuth.textContent = 'Зарегистрироваться';
+    })
+    .catch((err) => console.log(err));
+
+  formAuth.reset();
+  statePopupAuth.close();
 });
 
 
