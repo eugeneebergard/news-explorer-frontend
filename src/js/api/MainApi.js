@@ -10,7 +10,9 @@ export default class Api {
 
     return fetch(`${this.options.baseUrl}/signup`, {
       method: 'POST',
-      headers: this.options.headers,
+      headers: {
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({
         email,
         password,
@@ -30,7 +32,9 @@ export default class Api {
 
     return fetch(`${this.options.baseUrl}/signin`, {
       method: 'POST',
-      headers: this.options.headers,
+      headers: {
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({
         email,
         password,
@@ -45,7 +49,10 @@ export default class Api {
 
   getUserData() {
     return fetch(`${this.options.baseUrl}/users/me`, {
-      headers: this.options.headers,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('jwtToken')}`,
+      },
     })
       .then((res) => {
         if (res.ok) return res.json();

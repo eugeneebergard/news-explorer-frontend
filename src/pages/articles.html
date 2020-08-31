@@ -20,19 +20,19 @@
               header__link_theme_light
               header__link_main
               link" href="./">Главная</a>
-        <a class="
+        <a id="articles-desk" class="
               header__link
               header__link_theme_light
               header__link_state-disabled_theme_light
               header__link_articles
               header__link_articles_active
               link" href="./articles.html">Сохранённые статьи</a>
-        <button class="
+        <button id="logout-desk" class="
               header__button
               header__button_theme_light
               header__button_logout
               header__button_logout_active
-              button">Грета<img class="button__logout-svg" alt="Выход"
+              button"><span class="user-name">Пользователь</span><img class="button__logout-svg" alt="Выход"
                                 src="<%=require('../images/logout_theme_light.svg').default%>">
         </button>
       </nav>
@@ -51,29 +51,21 @@
                 link" href="./">Главная</a>
         </li>
         <li class="header__item">
-          <a class="
+          <a id="articles-mobile" class="
                 header__link
                 header__link_theme_dark
                 header__link_articles
+                header__link_articles_active
                 link" href="./articles.html">Сохранённые статьи</a>
         </li>
-        <li class="header__item">
-          <button class="
-                header__button
-                header__button_theme_dark
-                header__button_auth
-                button">Авторизация
-          </button>
-        </li>
-        <li class="header__item">
-          <button class="
+        <button id="logout-mobile" class="
                 header__button
                 header__button_theme_dark
                 header__button_logout
-                button">Грета<img class="button__logout-svg" alt="Выход"
+                header__button_logout_active
+                button"><span class="user-name">Пользователь</span><img class="button__logout-svg" alt="Выход"
                                   src="<%=require('../images/logout_theme_dark.svg').default%>">
-          </button>
-        </li>
+        </button>
       </ul>
     </nav>
   </header>

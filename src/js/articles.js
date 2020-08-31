@@ -13,3 +13,7 @@ buttonOpenMenu.addEventListener('click', () => {
 buttonCloseMenu.addEventListener('click', () => {
   mobileMenu.classList.remove('header__mobile-menu_show');
 });
+
+if(localStorage.jwtToken === '' || !localStorage.jwtToken) {
+  document.location.href = './';
+}

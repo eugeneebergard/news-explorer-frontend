@@ -1,21 +1,34 @@
 export default class Header {
-  constructor(element, linkArticles, buttonLogout, buttonOpenAuthDesktop) {
+  constructor(element, linkArticlesDesktop, linkArticlesMobile, buttonLogoutDesktop, buttonLogoutMobile, buttonOpenAuthDesktop, buttonOpenAuthMobile, userName) {
     this.element = element;
-    this.linkArticles = linkArticles;
-    this.buttonLogout = buttonLogout;
+    this.linkArticlesDesktop = linkArticlesDesktop;
+    this.linkArticlesMobile = linkArticlesMobile;
+    this.buttonLogoutDesktop = buttonLogoutDesktop;
+    this.buttonLogoutMobile = buttonLogoutMobile;
     this.buttonOpenAuthDesktop = buttonOpenAuthDesktop;
+    this.buttonOpenAuthMobile = buttonOpenAuthMobile;
+    this.userName = userName;
   }
 
   render() {
-    console.log(localStorage.jwtToken);
+    let actualUser = localStorage.getItem('username');
+
     if(localStorage.jwtToken === '' || !localStorage.jwtToken) {
-      this.linkArticles.classList.remove('header__link_articles_active');
-      this.buttonLogout.classList.remove('header__button_logout_active');
+      this.userName.forEach(btn => btn.textContent = 'Пользователь');
+      this.linkArticlesDesktop.classList.remove('header__link_articles_active');
+      this.linkArticlesMobile.classList.remove('header__link_articles_active');
+      this.buttonLogoutDesktop.classList.remove('header__button_logout_active');
+      this.buttonLogoutMobile.classList.remove('header__button_logout_active');
       this.buttonOpenAuthDesktop.classList.add('header__button_auth_active');
+      this.buttonOpenAuthMobile.classList.add('header__button_auth_active')
     } else {
-      this.linkArticles.classList.add('header__link_articles_active');
-      this.buttonLogout.classList.add('header__button_logout_active');
+      this.userName.forEach(btn => btn.textContent = actualUser);
+      this.linkArticlesDesktop.classList.add('header__link_articles_active');
+      this.linkArticlesMobile.classList.add('header__link_articles_active');
+      this.buttonLogoutDesktop.classList.add('header__button_logout_active');
+      this.buttonLogoutMobile.classList.add('header__button_logout_active');
       this.buttonOpenAuthDesktop.classList.remove('header__button_auth_active');
+      this.buttonOpenAuthMobile.classList.remove('header__button_auth_active')
     }
   }
 

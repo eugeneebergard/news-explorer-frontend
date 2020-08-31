@@ -1,8 +1,14 @@
 @import url('./_active/header__button_logout_active.css');
 
 .header__button.header__button_logout {
-    width: 112px;
     display: none;
     justify-content: center;
     align-items: center;
+}
+
+@media (max-width: 700px) {
+    .header__button.header__button_logout {
+        height: 56px;
+        width: 288px;
+    }
 }

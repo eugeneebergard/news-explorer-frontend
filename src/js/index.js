@@ -13,6 +13,7 @@ const { validMessage, options } = require('./constants/constans');
 // Popups
 const popupAuth = document.querySelector('.popup_type_auth');
 const popupSignup = document.querySelector('.popup_type_signup');
+const popupSuccess = document.querySelector('.popup_type_success');
 // Forms
 const formAuth = document.querySelector('.popup__form_type_auth');
 const formSignup = document.querySelector('.popup__form_type_signup');
@@ -21,29 +22,45 @@ const submitAuth = document.querySelector('.popup__button_type_auth');
 const submitSignup = document.querySelector('.popup__button_type_signup');
 // Ссылки внутри popups
 const popupLinkSignup = document.querySelector('.popup__link_signup');
-const popupLinkAuth = document.querySelector('.popup__link_auth');
+const popupLinkAuthFromSignup = document.querySelector('.popup__link_auth_from-signup');
+const popupLinkAuthFromSuccess = document.querySelector('.popup__link_auth_from-success');
 // Кнопки аутентификации двух версий
 const buttonOpenAuthDesktop = document.getElementById('auth-desk');
 const buttonOpenAuthMobile = document.getElementById('auth-mobile');
+// Кнопки выхода двух версий
+const buttonLogoutDesktop = document.getElementById('logout-desk');
+const buttonLogoutMobile = document.getElementById('logout-mobile');
 // Кнопки для закрытия popups
 const buttonCloseAuth = document.querySelector('.popup__close_type_auth');
 const buttonCloseSignup = document.querySelector('.popup__close_type_signup');
+const buttonCloseSuccess = document.querySelector('.popup__close_type_success');
 // Кнопки для открытия и закрытия меню в мобильной версии
 const buttonOpenMenu = document.querySelector('.header__mobile-menu_open');
 const buttonCloseMenu = document.querySelector('.header__mobile-menu_close');
 // Меню мобильной версии
 const mobileMenu = document.querySelector('.header__mobile-menu');
-// Элементы поведения header
-const buttonLogout = document.querySelector('.header__button_logout');
-const linkArticles = document.querySelector('.header__link_articles');
+// Ссылка на articles двух версий
+const linkArticlesDesktop = document.getElementById('articles-desk');
+const linkArticlesMobile = document.getElementById('articles-mobile');
+// Пользователь
+const userName = document.querySelectorAll('.user-name');
 
 // Передача опций классам
 const mainApi = new MainApi(options);
 const statePopupAuth = new Popup(popupAuth);
 const statePopupSignup = new Popup(popupSignup);
-const stateHeader = new Header(mobileMenu, linkArticles, buttonLogout, buttonOpenAuthDesktop);
+const statePopupSuccess = new Popup(popupSuccess);
 const formValidatorAuth = new Form(formAuth, submitAuth, validMessage);
 const formValidatorSignup = new Form(formSignup, submitSignup, validMessage);
+const stateHeader = new Header(
+  mobileMenu,
+  linkArticlesDesktop,
+  linkArticlesMobile,
+  buttonLogoutDesktop,
+  buttonLogoutMobile,
+  buttonOpenAuthDesktop,
+  buttonOpenAuthMobile,
+  userName);
 
 // Слушатели событий
 
@@ -66,10 +83,15 @@ popupLinkSignup.addEventListener('click', () => {
   statePopupSignup.open();
 });
 
-popupLinkAuth.addEventListener('click', () => {
+popupLinkAuthFromSignup.addEventListener('click', () => {
   statePopupSignup.close();
   formValidatorAuth.setEventListeners();
   formValidatorAuth.setSubmitButtonStateDisactive();
+  statePopupAuth.open();
+});
+
+popupLinkAuthFromSuccess.addEventListener('click', () => {
+  statePopupSuccess.close();
   statePopupAuth.open();
 });
 
@@ -83,6 +105,10 @@ buttonCloseSignup.addEventListener('click', () => {
   statePopupSignup.close();
   formValidatorSignup.resetAllErrors();
   formSignup.reset();
+});
+
+buttonCloseSuccess.addEventListener('click', () => {
+  statePopupSuccess.close();
 });
 
 buttonOpenMenu.addEventListener('click', () => {
@@ -105,6 +131,7 @@ submitSignup.addEventListener('click', (event) => {
     .then(() => {
       statePopupSignup.close();
       formSignup.reset();
+      statePopupSuccess.open();
     })
     .catch((err) => console.log(err));
 });
@@ -118,24 +145,30 @@ submitAuth.addEventListener('click', (event) => {
 
   mainApi.signin(user)
     .then((res) => {
-      mainApi.getUserData()
-        .then((res) => localStorage.setItem('username', res.name))
-        .catch((err) => console.log(err));
       localStorage.setItem('jwtToken', res.token);
-      stateHeader.render();
-      statePopupAuth.close();
-      formAuth.reset();
+    })
+    .then(() => {
+      mainApi.getUserData()
+        .then((res) => {
+          localStorage.setItem('username', res.name)
+          statePopupAuth.close();
+          formAuth.reset();
+          location.reload();
+        })
+        .catch((err) => console.log(err));
     })
     .catch((err) => console.log(err));
 });
 
-buttonLogout.addEventListener('click', () => {
+buttonLogoutDesktop.addEventListener('click', () => {
   localStorage.clear();
-  stateHeader.render();
+  location.reload();
 });
 
+buttonLogoutMobile.addEventListener('click', () => {
+  localStorage.clear();
+  location.reload();
+});
+
+console.log(localStorage)
 stateHeader.render();
-
-
-
-

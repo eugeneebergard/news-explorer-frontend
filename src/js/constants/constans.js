@@ -5,10 +5,6 @@ const validMessage = {
 // Набор опций для API запросов
 const options = {
   baseUrl: NODE_ENV === 'development' ? 'http://api.news-explorer-ee.tk' : 'https://api.news-explorer-ee.tk',
-  headers: {
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${localStorage.getItem('jwtToken')}`,
-  },
 };
 
 module.exports = {
