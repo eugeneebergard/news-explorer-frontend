@@ -1,12 +1,13 @@
 import '../css/style.css';
 
-// Импорт модулей
+// Импорт классов
 import Popup from './components/Popup';
 import Form from './components/Form';
 import Header from './components/Header';
-import MainApi from "./api/MainApi";
 // Импорт констант
-const { validMessage, options } = require('./constants/constans');
+const { validMessage, options } = require('./constants/constants');
+// Импорт утилит
+const { checkAuth, signup, signin, signout } = require('./utils/utils');
 
 // Обращение к DOM дереву
 
@@ -45,22 +46,24 @@ const linkArticlesMobile = document.getElementById('articles-mobile');
 // Пользователь
 const userName = document.querySelectorAll('.user-name');
 
+const headersElements = {
+  mobileMenu: mobileMenu,
+  linkArticlesDesktop: linkArticlesDesktop,
+  linkArticlesMobile: linkArticlesMobile,
+  buttonLogoutDesktop: buttonLogoutDesktop,
+  buttonLogoutMobile: buttonLogoutMobile,
+  buttonOpenAuthDesktop: buttonOpenAuthDesktop,
+  buttonOpenAuthMobile: buttonOpenAuthMobile,
+  userName: userName,
+}
+
 // Передача опций классам
-const mainApi = new MainApi(options);
 const statePopupAuth = new Popup(popupAuth);
 const statePopupSignup = new Popup(popupSignup);
 const statePopupSuccess = new Popup(popupSuccess);
 const formValidatorAuth = new Form(formAuth, submitAuth, validMessage);
 const formValidatorSignup = new Form(formSignup, submitSignup, validMessage);
-const stateHeader = new Header(
-  mobileMenu,
-  linkArticlesDesktop,
-  linkArticlesMobile,
-  buttonLogoutDesktop,
-  buttonLogoutMobile,
-  buttonOpenAuthDesktop,
-  buttonOpenAuthMobile,
-  userName);
+const stateHeader = new Header(headersElements, checkAuth);
 
 // Слушатели событий
 
@@ -127,13 +130,7 @@ submitSignup.addEventListener('click', (event) => {
   const name = document.querySelector('.popup__input_type_name-signup');
   const user = { email: email.value, name: name.value, password: password.value };
 
-  mainApi.signup(user)
-    .then(() => {
-      statePopupSignup.close();
-      formSignup.reset();
-      statePopupSuccess.open();
-    })
-    .catch((err) => console.log(err));
+  signup(user, statePopupSignup, formSignup, statePopupSuccess);
 });
 
 submitAuth.addEventListener('click', (event) => {
@@ -143,32 +140,12 @@ submitAuth.addEventListener('click', (event) => {
   const password = document.querySelector('.popup__input_type_password-auth');
   const user = { email: email.value, password: password.value };
 
-  mainApi.signin(user)
-    .then((res) => {
-      localStorage.setItem('jwtToken', res.token);
-    })
-    .then(() => {
-      mainApi.getUserData()
-        .then((res) => {
-          localStorage.setItem('username', res.name)
-          statePopupAuth.close();
-          formAuth.reset();
-          location.reload();
-        })
-        .catch((err) => console.log(err));
-    })
-    .catch((err) => console.log(err));
+  signin(user, statePopupAuth, formAuth)
 });
 
-buttonLogoutDesktop.addEventListener('click', () => {
-  localStorage.clear();
-  location.reload();
-});
+buttonLogoutDesktop.addEventListener('click', () => signout());
 
-buttonLogoutMobile.addEventListener('click', () => {
-  localStorage.clear();
-  location.reload();
-});
+buttonLogoutMobile.addEventListener('click', () => signout());
 
 console.log(localStorage)
 stateHeader.render();

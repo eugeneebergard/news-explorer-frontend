@@ -1,5 +1,7 @@
 import '../css/articles.css';
 
+const { checkAuth } = require('./utils/utils');
+
 const buttonOpenMenu = document.querySelector('.header__mobile-menu_open');
 const buttonCloseMenu = document.querySelector('.header__mobile-menu_close');
 
@@ -14,6 +16,8 @@ buttonCloseMenu.addEventListener('click', () => {
   mobileMenu.classList.remove('header__mobile-menu_show');
 });
 
-if(localStorage.jwtToken === '' || !localStorage.jwtToken) {
-  document.location.href = './';
+function checkUserAuth() {
+  if(!checkAuth()) return document.location.href = './';
 }
+
+checkUserAuth();
