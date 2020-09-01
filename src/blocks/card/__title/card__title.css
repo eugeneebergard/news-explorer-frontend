@@ -1,6 +1,7 @@
 .card__title {
     display: -webkit-box;
     -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
     overflow: hidden;
     max-width: 1280px;
     margin: 12px 0 16px;

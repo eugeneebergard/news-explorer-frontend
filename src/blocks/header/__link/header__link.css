@@ -12,6 +12,7 @@
 
 @media (max-width: 1023px) {
     .header__link {
+        padding: 22px;
         margin-right: 16px;
     }
 }

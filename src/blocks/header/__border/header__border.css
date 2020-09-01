@@ -10,16 +10,19 @@
     justify-content: space-between;
     padding: 0 104px;
     z-index: 5;
+    min-height: 80px;
 }
 
 @media (max-width: 1023px) {
     .header__border {
-        padding: 0 40px
+        padding: 0 40px;
+        min-height: 66px;
     }
 }
 
 @media (max-width: 700px) {
     .header__border {
         padding: 0 16px;
+        min-height: 56px;
     }
 }

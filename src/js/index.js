@@ -5,9 +5,10 @@ import Popup from './components/Popup';
 import Form from './components/Form';
 import Header from './components/Header';
 // Импорт констант
-const { validMessages } = require('./constants/constants');
+const { validMessages, errorApiMessages, options } = require('./constants/constants');
 // Импорт утилит
-const { checkAuth, signup, signin, signout } = require('./utils/utils');
+const { checkAuth, signup, signin, signout, searchNews } = require('./utils/utils');
+
 
 // Обращение к DOM дереву
 
@@ -45,6 +46,9 @@ const linkArticlesDesktop = document.getElementById('articles-desk');
 const linkArticlesMobile = document.getElementById('articles-mobile');
 // Пользователь
 const userName = document.querySelectorAll('.user-name');
+// Кнопка поиска
+const buttonSearch = document.getElementById('search-button');
+const inputSearch = document.getElementById('search-input');
 
 const headersElements = {
   mobileMenu: mobileMenu,
@@ -141,6 +145,12 @@ submitAuth.addEventListener('click', (event) => {
   const user = { email: email.value, password: password.value };
 
   signin(user, statePopupAuth, formAuth)
+});
+
+buttonSearch.addEventListener('click', (event) => {
+  event.preventDefault();
+  const keyWord = inputSearch.value
+  searchNews(keyWord);
 });
 
 buttonLogoutDesktop.addEventListener('click', () => signout());

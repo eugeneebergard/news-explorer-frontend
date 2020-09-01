@@ -10,3 +10,15 @@
     top: 0;
     z-index: -1;
 }
+
+@media (max-width: 1023px) {
+    .cover {
+        min-height: 400px;
+    }
+}
+
+@media (max-width: 700px) {
+    .cover {
+        min-height: 536px;
+    }
+}

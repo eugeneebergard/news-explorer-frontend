@@ -87,53 +87,15 @@
         <p class="search__description">Находите самые свежие статьи на любую тему и сохраняйте в своём личном
           кабинете</p>
         <div class="search__container">
-          <input class="search__input input" type="text" placeholder="Введите тему новости">
-          <button class="search__button button">Искать</button>
+          <input id="search-input" class="search__input input" type="text" placeholder="Введите тему новости">
+          <button id="search-button" class="search__button button">Искать</button>
         </div>
       </form>
     </section>
 
     <section class="result">
       <h2 class="result__title">Результаты поиска</h2>
-      <div class="result__list">
-        <div class="card">
-          <img class="card__image" alt="Картинка статьи" src="<%=require('../images/image_08.jpg').default%>">
-          <div class="card__content">
-            <p class="card__data">2 августа, 2019</p>
-            <h3 class="card__title">Национальное достояние – парки</h3>
-            <p class="card__description">
-              В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала складываться система национальных
-              парков
-              – охраняемых территорий, где и сегодня каждый может приобщиться к природе.
-            </p>
-            <span class="card__publisher">Лента.ру</span>
-          </div>
-        </div>
-        <div class="card">
-          <img class="card__image" alt="Картинка статьи" src="<%=require('../images/image_08.jpg').default%>">
-          <div class="card__content">
-            <p class="card__data">2 августа, 2019</p>
-            <h3 class="card__title">Лесные огоньки: история одной фотографии</h3>
-            <p class="card__description">
-              Фотограф отвлеклась от освещения суровой политической реальности Мексики,
-              чтобы запечатлеть ускользающую красоту одного из местных чудес природы.
-            </p>
-            <span class="card__publisher">Медуза</span>
-          </div>
-        </div>
-        <div class="card">
-          <img class="card__image" alt="Картинка статьи" src="<%=require('../images/image_08.jpg').default%>">
-          <div class="card__content">
-            <p class="card__data">2 августа, 2019</p>
-            <h3 class="card__title">«Первозданная тайга»: новый фотопроект Игоря Шпиленка</h3>
-            <p class="card__description">
-              Знаменитый фотограф снимает первозданные леса России, чтобы рассказать о необходимости их сохранения.
-              В этот раз он отправился в Двинско-Пинежскую тайгу, где...
-            </p>
-            <span class="card__publisher">Риа</span>
-          </div>
-        </div>
-      </div>
+      <div class="result__list"></div>
       <button class="result__button button">Показать ещё</button>
     </section>
 

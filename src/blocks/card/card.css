@@ -4,6 +4,7 @@
 @import url(__content/card__content.css);
 @import url(__data/card__data.css);
 @import url(__publisher/card__publisher.css);
+@import url(__heading/card__heading.css);
 
 .card {
     display: block;

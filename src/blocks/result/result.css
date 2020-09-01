@@ -1,11 +1,13 @@
 @import url(./__title/result__title.css);
 @import url(./__button/result__button.css);
 @import url(./__list/result__list.css);
+@import url(./_show/result_show.css);
 
 .result {
     background-color: #F5F6F7;
     width: 100%;
     padding: 80px 0;
+    display: none;
 }
 
 @media (max-width: 1023px) {
