@@ -1,6 +1,9 @@
 export default class Api {
-  constructor(options) {
+  constructor(options, errorApiMessages, errorAuth, errorSignup) {
     this.options = options;
+    this.errorApiMessages = errorApiMessages;
+    this.errorAuth = errorAuth;
+    this.errorSignup = errorSignup;
   }
 
   signup(user) {
@@ -21,6 +24,15 @@ export default class Api {
     })
       .then((res) => {
         if (res.ok) return res.json();
+        else if (res.status == 409)  {
+          this.errorSignup.textContent = this.errorApiMessages.signupError;
+          this.errorSignup.classList.add('error_is-active')
+          console.log(this.errorApiMessages.signupError);
+        } else {
+          this.errorSignup.textContent = this.errorApiMessages.serverError;
+          this.errorSignup.classList.add('error_is-active')
+          console.log(this.errorApiMessages.serverError);
+        }
 
         return Promise.reject(new TypeError(`Ошибка: ${res.status}`));
       });
@@ -42,6 +54,15 @@ export default class Api {
     })
       .then((res) => {
         if (res.ok) return res.json();
+        else if (res.status == 400 || res.status == 401)  {
+          this.errorAuth.textContent = this.errorApiMessages.authError;
+          this.errorAuth.classList.add('error_is-active')
+          console.log(this.errorApiMessages.authError);
+        } else {
+          this.errorAuth.textContent = this.errorApiMessages.serverError;
+          this.errorAuth.classList.add('error_is-active')
+          console.log(this.errorApiMessages.serverError);
+        }
 
         return Promise.reject(new TypeError(`Ошибка: ${res.status}`));
       });

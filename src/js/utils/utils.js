@@ -1,7 +1,11 @@
 import MainApi from '../api/MainApi';
-const { options } = require('../constants/constants');
 
-const mainApi = new MainApi(options);
+const errorAuth = document.getElementById('error-auth');
+const errorSignup = document.getElementById('error-signup');
+
+const { options, errorApiMessages } = require('../constants/constants');
+
+const mainApi = new MainApi(options, errorApiMessages, errorAuth, errorSignup);
 
 export function checkAuth() {
   if(localStorage.jwtToken && localStorage.jwtToken !== '') return true;
@@ -11,11 +15,13 @@ export function checkAuth() {
 export function signup(user, statePopupSignup, formSignup, statePopupSuccess) {
   mainApi.signup(user)
     .then(() => {
-      statePopupSignup.close();
-      formSignup.reset();
-      statePopupSuccess.open();
+        statePopupSignup.close();
+        formSignup.reset();
+        statePopupSuccess.open();
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      console.log(err)
+    });
 }
 
 export function signin(user, statePopupAuth, formAuth){
@@ -23,9 +29,6 @@ export function signin(user, statePopupAuth, formAuth){
     .then((res) => {
       localStorage.setItem('jwtToken', res.token);
       getUserData(statePopupAuth, formAuth);
-    })
-    .then(() => {
-
     })
     .catch((err) => console.log(err));
 }

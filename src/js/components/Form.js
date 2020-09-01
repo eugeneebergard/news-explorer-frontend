@@ -59,6 +59,14 @@ export default class Form {
       return false;
     }
 
+    if (element.validity.tooShort) {
+      this.errorElement.textContent = this.validMessage.validationPass;
+      this.errorElement.classList.add('error_is-active');
+      this.setSubmitButtonStateDisactive();
+
+      return false;
+    }
+
     this._resetError();
 
     return true;

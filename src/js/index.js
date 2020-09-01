@@ -5,7 +5,7 @@ import Popup from './components/Popup';
 import Form from './components/Form';
 import Header from './components/Header';
 // Импорт констант
-const { validMessage, options } = require('./constants/constants');
+const { validMessages } = require('./constants/constants');
 // Импорт утилит
 const { checkAuth, signup, signin, signout } = require('./utils/utils');
 
@@ -61,8 +61,8 @@ const headersElements = {
 const statePopupAuth = new Popup(popupAuth);
 const statePopupSignup = new Popup(popupSignup);
 const statePopupSuccess = new Popup(popupSuccess);
-const formValidatorAuth = new Form(formAuth, submitAuth, validMessage);
-const formValidatorSignup = new Form(formSignup, submitSignup, validMessage);
+const formValidatorAuth = new Form(formAuth, submitAuth, validMessages);
+const formValidatorSignup = new Form(formSignup, submitSignup, validMessages);
 const stateHeader = new Header(headersElements, checkAuth);
 
 // Слушатели событий
