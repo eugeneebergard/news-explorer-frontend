@@ -15,6 +15,7 @@
 @import url('../blocks/popup/popup.css');
 @import url('../blocks/error/error.css');
 @import url('../blocks/not-found/not-found.css');
+@import url('../blocks/preloader/preloader.css');
 
 .page {
     min-height: 100vh;

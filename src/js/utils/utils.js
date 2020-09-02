@@ -11,6 +11,8 @@ const cardList = document.querySelector('.result__list');
 const notFound = document.querySelector('.not-found');
 const result = document.querySelector('.result');
 
+
+
 const { options, errorApiMessages, errorSearchMessages } = require('../constants/constants');
 
 const mainApi = new MainApi(options, errorApiMessages, errorAuth, errorSignup);
@@ -60,18 +62,20 @@ function getUserData(statePopupAuth, formAuth) {
     .catch((err) => console.log(err));
 }
 // Поиск новостей
-export function searchNews(keyWord) {
+export function searchNews(keyWord, preloader) {
   newsApi.getNews(keyWord, actualDate)
     .then((res) => {
       newsCardList.renderResults(res);
     })
     .then(() => {
+      hidePreload(preloader);
       // Если запрос успешен, возвращаем начальное сообщение в not-found
       resultErrorTitle.textContent = errorSearchMessages.notFound.title;
       resultErrorText.textContent = errorSearchMessages.notFound.text;
       notFound.classList.remove('not-found_show');
     })
     .catch(() => {
+      hidePreload(preloader);
       // Если запрос не успешен, выводим сообщение ошибки сервера
       resultErrorTitle.textContent = errorSearchMessages.serverError.title;
       resultErrorText.textContent = errorSearchMessages.serverError.text;
@@ -98,6 +102,14 @@ export function correctDate(string) {
 
 export function callShowMore() {
   newsCardList.addCard();
+}
+
+function hidePreload(preloader) {
+  preloader.classList.remove('preloader_show');
+}
+
+export function hideResult() {
+  result.classList.remove('result_show');
 }
 
 

@@ -46,9 +46,6 @@ export default class NewsCardList {
   }
 
   addCard() {
-    if(this.articlesArray.length < 3) {
-
-    }
     // Вырезаем 3 карточки из массива
     const actualArticles = this.articlesArray.splice(0, 3);
     actualArticles.forEach((article) => {
@@ -66,7 +63,7 @@ export default class NewsCardList {
 
         // Создаём разметку карточки
         const createdCard = this.createCard(card);
-        // Проверяем, первая ли карточка и отрисовывем её
+        // Проверяем, первая ли карточка и отрисовываем её
         if (this.newCard) {
           this.cardList.insertBefore(createdCard, this.cardList.firstChild);
         } else {
@@ -81,7 +78,6 @@ export default class NewsCardList {
     this.cardContainer = document.createElement('div');
     this.cardContainer.classList.add('card');
     if(this.card.image === null) this.card.image = "https://thumbs.dreamstime.com/b/stack-newspaper-18883891.jpg";
-    console.log(this.card.image);
     this.cardContainer.insertAdjacentHTML(
       'beforeend',
 

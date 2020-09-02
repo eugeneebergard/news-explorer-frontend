@@ -4,11 +4,10 @@ import '../css/style.css';
 import Popup from './components/Popup';
 import Form from './components/Form';
 import Header from './components/Header';
-import NewsCardList from './components/NewsCardList';
 // Импорт констант
 const { validMessages, errorApiMessages, options } = require('./constants/constants');
 // Импорт утилит
-const { checkAuth, signup, signin, signout, searchNews, callShowMore } = require('./utils/utils');
+const { checkAuth, signup, signin, signout, searchNews, callShowMore, hideResult } = require('./utils/utils');
 
 
 // Обращение к DOM дереву
@@ -51,6 +50,8 @@ const userName = document.querySelectorAll('.user-name');
 const buttonSearch = document.getElementById('search-button');
 const inputSearch = document.getElementById('search-input');
 const buttonResult = document.querySelector('.result__button');
+// Прелоадер
+const preloader = document.querySelector('.preloader');
 
 const headersElements = {
   mobileMenu: mobileMenu,
@@ -151,8 +152,10 @@ submitAuth.addEventListener('click', (event) => {
 
 buttonSearch.addEventListener('click', (event) => {
   event.preventDefault();
+  hideResult();
+  preloader.classList.add('preloader_show');
   const keyWord = inputSearch.value
-  if (keyWord !== '') searchNews(keyWord);
+  if (keyWord !== '') searchNews(keyWord, preloader);
 });
 
 buttonResult.addEventListener('click', (event) => {
