@@ -152,7 +152,7 @@ submitAuth.addEventListener('click', (event) => {
 buttonSearch.addEventListener('click', (event) => {
   event.preventDefault();
   const keyWord = inputSearch.value
-  searchNews(keyWord);
+  if (keyWord !== '') searchNews(keyWord);
 });
 
 buttonResult.addEventListener('click', (event) => {

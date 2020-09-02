@@ -10,11 +10,22 @@ const errorApiMessages = {
   signupError: "Пользователь с таким email уже существует",
   serverError: "Ошибка сервера",
 }
+
+const errorSearchMessages = {
+  'notFound': {
+    title: 'Ничего не найдено',
+    text: 'К сожалению по вашему запросу ничего не найдено'
+  },
+  'serverError': {
+    title: 'Во время запроса произошла ошибка',
+    text: 'Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз'
+  },
+}
 // Набор опций для API запросов
 const options = {
   baseUrl: NODE_ENV === 'development' ? 'http://api.news-explorer-ee.tk' : 'https://api.news-explorer-ee.tk',
 };
 
 module.exports = {
-  validMessages, errorApiMessages, options,
+  validMessages, errorApiMessages, errorSearchMessages, options,
 };

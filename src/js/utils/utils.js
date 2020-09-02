@@ -4,12 +4,14 @@ import NewsCardList from '../components/NewsCardList';
 
 const errorAuth = document.getElementById('error-auth');
 const errorSignup = document.getElementById('error-signup');
+const resultErrorTitle = document.querySelector('.not-found__heading');
+const resultErrorText = document.querySelector('.not-found__text');
 
 const cardList = document.querySelector('.result__list');
 const notFound = document.querySelector('.not-found');
 const result = document.querySelector('.result');
 
-const { options, errorApiMessages } = require('../constants/constants');
+const { options, errorApiMessages, errorSearchMessages } = require('../constants/constants');
 
 const mainApi = new MainApi(options, errorApiMessages, errorAuth, errorSignup);
 const newsApi = new NewsApi();
@@ -64,11 +66,16 @@ export function searchNews(keyWord) {
       newsCardList.renderResults(res);
     })
     .then(() => {
-      // Убрать лоудер
+      // Если запрос успешен, возвращаем начальное сообщение в not-found
+      resultErrorTitle.textContent = errorSearchMessages.notFound.title;
+      resultErrorText.textContent = errorSearchMessages.notFound.text;
+      notFound.classList.remove('not-found_show');
     })
-    .catch((err) => {
-      // Убрать лоудер
-      console.log(err);
+    .catch(() => {
+      // Если запрос не успешен, выводим сообщение ошибки сервера
+      resultErrorTitle.textContent = errorSearchMessages.serverError.title;
+      resultErrorText.textContent = errorSearchMessages.serverError.text;
+      notFound.classList.add('not-found_show');
     });
 }
 // Рефакторинг числа

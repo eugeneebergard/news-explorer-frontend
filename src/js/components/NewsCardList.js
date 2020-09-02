@@ -46,6 +46,9 @@ export default class NewsCardList {
   }
 
   addCard() {
+    if(this.articlesArray.length < 3) {
+
+    }
     // Вырезаем 3 карточки из массива
     const actualArticles = this.articlesArray.splice(0, 3);
     actualArticles.forEach((article) => {
