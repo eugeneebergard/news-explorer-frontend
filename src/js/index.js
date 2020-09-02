@@ -4,10 +4,11 @@ import '../css/style.css';
 import Popup from './components/Popup';
 import Form from './components/Form';
 import Header from './components/Header';
+import NewsCardList from './components/NewsCardList';
 // Импорт констант
 const { validMessages, errorApiMessages, options } = require('./constants/constants');
 // Импорт утилит
-const { checkAuth, signup, signin, signout, searchNews } = require('./utils/utils');
+const { checkAuth, signup, signin, signout, searchNews, callShowMore } = require('./utils/utils');
 
 
 // Обращение к DOM дереву
@@ -46,9 +47,10 @@ const linkArticlesDesktop = document.getElementById('articles-desk');
 const linkArticlesMobile = document.getElementById('articles-mobile');
 // Пользователь
 const userName = document.querySelectorAll('.user-name');
-// Кнопка поиска
+// Элементы поиска новостей
 const buttonSearch = document.getElementById('search-button');
 const inputSearch = document.getElementById('search-input');
+const buttonResult = document.querySelector('.result__button');
 
 const headersElements = {
   mobileMenu: mobileMenu,
@@ -152,6 +154,12 @@ buttonSearch.addEventListener('click', (event) => {
   const keyWord = inputSearch.value
   searchNews(keyWord);
 });
+
+buttonResult.addEventListener('click', (event) => {
+  event.preventDefault();
+
+  callShowMore();
+})
 
 buttonLogoutDesktop.addEventListener('click', () => signout());
 

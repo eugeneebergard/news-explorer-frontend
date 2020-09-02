@@ -89,5 +89,9 @@ export function correctDate(string) {
   return date.toLocaleDateString();
 }
 
+export function callShowMore() {
+  newsCardList.addCard();
+}
+
 
 

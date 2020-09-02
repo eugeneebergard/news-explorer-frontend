@@ -16,5 +16,5 @@ const options = {
 };
 
 module.exports = {
-  validMessages, errorApiMessages, options
+  validMessages, errorApiMessages, options,
 };
