@@ -64,6 +64,8 @@ const headersElements = {
   userName: userName,
 }
 
+const page = 'main';
+
 // Передача опций классам
 const statePopupAuth = new Popup(popupAuth);
 const statePopupSignup = new Popup(popupSignup);
@@ -164,9 +166,9 @@ buttonSearch.addEventListener('click', (event) => {
 
 buttonResult.addEventListener('click', (event) => {
   event.preventDefault();
-
+  newsCard.renderIcon();
   callShowMore();
-})
+});
 
 buttonLogoutDesktop.addEventListener('click', () => signout());
 

@@ -32,10 +32,6 @@ export default class NewsCardList {
     }
   }
 
-  renderLoader() {
-
-  }
-
   renderError(error) {
     if (error)  {
       this.notFound.classList.add('not-found_show');
@@ -113,5 +109,4 @@ export default class NewsCardList {
       }
     }
   }
-
 }
