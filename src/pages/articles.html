@@ -80,7 +80,15 @@
     <section class="result result_show">
       <div class="result__list">
         <div class="card">
-          <img class="card__image" alt="Картинка статьи" src="<%=require('../images/image_08.jpg').default%>">
+          <div class="card__heading">
+            <div class="card__keyword card__keyword_show">
+              <p>Природа</p>
+            </div>
+            <div class="card__icon">
+              <img class="card__icon_delete" src="<%=require('../images/trash.svg').default%>">
+            </div>
+            <img class="card__image" alt="Картинка статьи" src="<%=require('../images/image_08.jpg').default%>">
+          </div>
           <div class="card__content">
             <p class="card__data">2 августа, 2019</p>
             <h3 class="card__title">Национальное достояние – парки</h3>

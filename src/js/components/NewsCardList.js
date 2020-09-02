@@ -6,11 +6,12 @@ export default class NewsCardList {
     this.correctDate = correctDate;
   }
 
-  renderResults(news) {
+  renderResults(news, keyWord) {
     // Есть ли результат?
     let noRes;
     // Первая ли это карточка в массиве?
     let newCard = true;
+    this.keyWord = keyWord;
     this.newCard = newCard;
     // Вытаскиваем массив из объекта
     const articlesArray = news.articles;
@@ -47,12 +48,14 @@ export default class NewsCardList {
 
   addCard() {
     // Вырезаем 3 карточки из массива
+
     const actualArticles = this.articlesArray.splice(0, 3);
+    console.log(actualArticles)
     actualArticles.forEach((article) => {
       //Выводим данные из карточки
         const card = {
           title: article.title,
-          keyword: article.keyword,
+          keyword: this.keyWord,
           image: article.urlToImage,
           date: article.publishedAt,
           description: article.description,
@@ -83,6 +86,10 @@ export default class NewsCardList {
 
       `<a class="link" href="${this.card.link}" target="_blank">
           <div class="card__heading">
+            <div class="card__keyword">
+              <p>${this.card.keyword}</p>
+            </div>
+            <div class="card__icon"></div>
             <img class="card__image" alt="К сожалению, картинка убежала с карточки :(" src="${this.card.image}">
           </div>
           <div class="card__content">

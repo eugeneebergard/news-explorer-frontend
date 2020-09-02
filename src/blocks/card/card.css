@@ -6,6 +6,8 @@
 @import url(__publisher/card__publisher.css);
 @import url(__heading/card__heading.css);
 @import url(__text/card__text.css);
+@import url(__icon/card__icon.css);
+@import url(__keyword/card__keyword.css);
 
 .card {
     display: block;

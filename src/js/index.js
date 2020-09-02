@@ -152,10 +152,14 @@ submitAuth.addEventListener('click', (event) => {
 
 buttonSearch.addEventListener('click', (event) => {
   event.preventDefault();
-  hideResult();
-  preloader.classList.add('preloader_show');
+
   const keyWord = inputSearch.value
-  if (keyWord !== '') searchNews(keyWord, preloader);
+
+  if (keyWord && keyWord !== '' )  {
+    hideResult();
+    preloader.classList.add('preloader_show');
+    searchNews(keyWord, preloader);
+  }
 });
 
 buttonResult.addEventListener('click', (event) => {

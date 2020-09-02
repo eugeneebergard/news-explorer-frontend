@@ -11,8 +11,6 @@ const cardList = document.querySelector('.result__list');
 const notFound = document.querySelector('.not-found');
 const result = document.querySelector('.result');
 
-
-
 const { options, errorApiMessages, errorSearchMessages } = require('../constants/constants');
 
 const mainApi = new MainApi(options, errorApiMessages, errorAuth, errorSignup);
@@ -65,7 +63,7 @@ function getUserData(statePopupAuth, formAuth) {
 export function searchNews(keyWord, preloader) {
   newsApi.getNews(keyWord, actualDate)
     .then((res) => {
-      newsCardList.renderResults(res);
+      newsCardList.renderResults(res, keyWord);
     })
     .then(() => {
       hidePreload(preloader);

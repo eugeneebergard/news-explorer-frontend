@@ -1,0 +1,38 @@
+@import url('./_delete/card__icon_delete.css');
+@import url('./_bookmark/card__icon_bookmark.css');
+
+.card__icon {
+    background-color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: #1A1B22;
+    opacity: .5;
+    transition: opacity .3s;
+}
+
+.card__icon:hover {
+    opacity: 1;
+}
+
+@media (max-width: 1023px) {
+    .card__icon {
+        top: 8px;
+        right: 8px;
+    }
+}
+
+@media (max-width: 700px) {
+    .card__icon {
+        top: 16px;
+        right: 16px;
+    }
+}

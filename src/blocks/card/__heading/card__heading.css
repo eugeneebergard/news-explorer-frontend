@@ -1,9 +1,10 @@
 .card__heading {
-    height: 224px;
+    height: 272px;
     width: 100%;
     background-color: #E5E5E5;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    position: relative;
 }
 
 @media (max-width: 1023px) {

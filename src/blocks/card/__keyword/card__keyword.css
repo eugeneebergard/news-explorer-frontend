@@ -1,0 +1,33 @@
+@import url('./_show/card__keyword_show.css');
+
+.card__keyword {
+    padding: 0 10px;
+    background-color: white;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    display: none;
+}
+
+@media (max-width: 1023px) {
+    .card__keyword {
+        top: 8px;
+        left: 8px;
+    }
+}
+
+@media (max-width: 700px) {
+    .card__keyword {
+        top: 16px;
+        left: 16px;
+    }
+}
