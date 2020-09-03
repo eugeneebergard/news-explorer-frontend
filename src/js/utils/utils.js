@@ -65,7 +65,7 @@ export function searchNews(keyWord, preloader) {
   newsApi.getNews(keyWord, actualDate)
     .then((res) => {
       // Если запрос успешен - вызываем рендер
-      newsCardList.renderResults(res, keyWord);
+      newsCardList.renderResults(res, 'main', keyWord);
     })
     .then(() => {
       hidePreload(preloader);
@@ -92,7 +92,7 @@ export function correctDate(string) {
 
 // Вызов метода, добавляющий карточки
 export function callShowMore() {
-  newsCardList.addCard();
+  newsCardList.addCard('main');
 }
 
 // Вызов рендера иконок
@@ -104,7 +104,10 @@ export function callRenderIcons(page) {
 export function callGetArticles() {
   mainApi.getArticles()
     .then((res) => {
-      console.log(res);
+      newsCardList.renderResults(res, 'articles', '');
+    })
+    .then(() => {
+      callRenderIcons('articles');
     })
     .catch((err) => {
       console.log(err);

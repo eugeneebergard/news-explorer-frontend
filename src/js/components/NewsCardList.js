@@ -8,29 +8,39 @@ export default class NewsCardList {
     this.checkAuth = checkAuth;
   }
 
-  renderResults(news, keyWord) {
+  renderResults(news, page, keyWord) {
     // Есть ли результат?
     let noRes;
+    let articlesArray = [];
     // Первая ли это карточка в массиве?
     let newCard = true;
     this.keyWord = keyWord;
     this.newCard = newCard;
     // Вытаскиваем массив из объекта
-    const articlesArray = news.articles;
+    if (page === 'main') articlesArray = news.articles;
+    else articlesArray = news.data;
     this.articlesArray = articlesArray;
     // Проверка на пустой массив
-    if (news.articles.length === 0) {
-      // Результата нет, поэтому вызываем обработчик ошибки и выводим "ничего не найдено"
-      noRes = true;
-      this.renderError(noRes);
+    if(page === 'main') {
+      if (news.articles.length === 0) {
+        // Результата нет, поэтому вызываем обработчик ошибки и выводим "ничего не найдено"
+        noRes = true;
+        this.renderError(noRes);
+      } else {
+        // Результат есть, поэтому вызываем обработчик ошибки и выводим результат
+        noRes = false;
+        this.renderError(noRes);
+        // Чистим результаты от прошлых новостей
+        this._clearResult();
+        // Выводим 3 карточки на экран
+        this.addCard(page);
+      }
     } else {
-      // Результат есть, поэтому вызываем обработчик ошибки и выводим результат
-      noRes = false;
-      this.renderError(noRes);
-      // Чистим результаты от прошлых новостей
-      this._clearResult();
-      // Выводим 3 карточки на экран
-      this.addCard();
+      if(news.data.length === 0) {
+
+      } else {
+        this.addCard(page);
+      }
     }
   }
 
@@ -44,13 +54,18 @@ export default class NewsCardList {
     }
   }
 
-  addCard() {
-    // Вырезаем 3 карточки из массива
-    const actualArticles = this.articlesArray.splice(0, 3);
+  addCard(page) {
+    let actualArticles = [];
+
+    if(page === 'main') actualArticles = this.articlesArray.splice(0, 3);
+    else actualArticles = this.articlesArray.splice(0, this.articlesArray.length);
+
     console.log(actualArticles)
     actualArticles.forEach((article) => {
+      let card = {};
       //Выводим данные из карточки
-        const card = {
+      if (page === 'main') {
+        card = {
           title: article.title,
           keyword: this.keyWord,
           image: article.urlToImage,
@@ -58,8 +73,19 @@ export default class NewsCardList {
           text: article.description,
           source: article.source.name,
           link: article.url,
+        }
+      } else {
+        card = {
+          title: article.title,
+          keyword: article.keyword,
+          image: article.image,
+          date: article.date,
+          text: article.text,
+          source: article.source,
+          link: article.link,
           cardId: article._id,
         }
+      }
 
         // Создаём разметку карточки
         const createdCard = this.createCard(card);
@@ -143,8 +169,9 @@ export default class NewsCardList {
   }
 
   deleteCard(event) {
+    console.log(this.card);
     const clickCard = event.target.closest('.card');
-    this.mainApi.removeArticle(this.card._id)
+    this.mainApi.removeArticle(this.card.cardId)
       .then((res) => {
         this.removeEventListeners();
         clickCard.remove();
@@ -169,6 +196,7 @@ export default class NewsCardList {
   }
 
   setEventListeners() {
+    console.log(this.card);
     this
       .cardContainer
       .querySelector('.card__icon_bookmark')
@@ -180,6 +208,14 @@ export default class NewsCardList {
     this
       .cardContainer
       .querySelector('.card__icon_bookmark')
+      .addEventListener('mouseout', () => this.hideMessage(event));
+    this
+      .cardContainer
+      .querySelector('.card__icon_delete')
+      .addEventListener('mouseover', () => this.showMessage(event));
+    this
+      .cardContainer
+      .querySelector('.card__icon_delete')
       .addEventListener('mouseout', () => this.hideMessage(event));
     this
       .cardContainer
@@ -203,10 +239,14 @@ export default class NewsCardList {
     this
       .cardContainer
       .querySelector('.card__icon_delete')
-      .removeEventListener('click', () => this.deleteCard(event));
+      .removeEventListener('mouseover', () => this.showMessage(event));
     this
       .cardContainer
-      .querySelector('.card__icon_bookmark_clicked')
+      .querySelector('.card__icon_delete')
+      .removeEventListener('mouseout', () => this.hideMessage(event));
+    this
+      .cardContainer
+      .querySelector('.card__icon_delete')
       .removeEventListener('click', () => this.deleteCard(event));
   }
 }

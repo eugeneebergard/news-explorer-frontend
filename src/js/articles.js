@@ -24,4 +24,3 @@ function checkUserAuth() {
 
 checkUserAuth();
 callGetArticles();
-callRenderIcons(page);
