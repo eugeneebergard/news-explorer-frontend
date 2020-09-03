@@ -8,6 +8,8 @@
 @import url(__text/card__text.css);
 @import url(__icon/card__icon.css);
 @import url(__keyword/card__keyword.css);
+@import url(__message/card__message.css);
+@import url(__message-text/card__message-text.css);
 
 .card {
     display: block;

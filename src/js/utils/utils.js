@@ -2,6 +2,7 @@
 import MainApi from '../api/MainApi';
 import NewsApi from '../api/NewsApi';
 import NewsCardList from '../components/NewsCardList';
+import NewsCard from '../components/NewsCard';
 // Места вывода ошибок popup'a и поиска
 const errorAuth = document.getElementById('error-auth');
 const errorSignup = document.getElementById('error-signup');
@@ -12,11 +13,12 @@ const cardList = document.querySelector('.result__list');
 const notFound = document.querySelector('.not-found');
 const result = document.querySelector('.result');
 // Импорт констант
-const { options, errorApiMessages, errorSearchMessages } = require('../constants/constants');
+const { options, errorApiMessages, errorSearchMessages, cardMessages } = require('../constants/constants');
 // Объявление методов
 const mainApi = new MainApi(options, errorApiMessages, errorAuth, errorSignup);
 const newsApi = new NewsApi();
-const newsCardList = new NewsCardList(cardList, notFound, result, correctDate);
+const newsCardList = new NewsCardList(cardList, notFound, result, correctDate, mainApi, checkAuth);
+const newCard = new NewsCard(checkAuth, cardMessages);
 
 // Проверка авторизации
 export function checkAuth() {
@@ -70,6 +72,8 @@ export function searchNews(keyWord, preloader) {
       // Если запрос успешен, возвращаем начальное сообщение в not-found
       resultErrorTitle.textContent = errorSearchMessages.notFound.title;
       resultErrorText.textContent = errorSearchMessages.notFound.text;
+      // и вызываем рендер иконок
+      callRenderIcons('main');
     })
     .catch(() => {
       // Если запрос не успешен, скрываем прелоадер и выводим сообщение ошибки сервера
@@ -89,6 +93,22 @@ export function correctDate(string) {
 // Вызов метода, добавляющий карточки
 export function callShowMore() {
   newsCardList.addCard();
+}
+
+// Вызов рендера иконок
+export function callRenderIcons(page) {
+  newCard.renderIcon(page);
+}
+
+// Вызов запроса сохранённых карточек
+export function callGetArticles() {
+  mainApi.getArticles()
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
 }
 
 // Получить имя пользователя

@@ -1,20 +1,45 @@
 export default class NewsCard {
-  constructor(page) {
-    this.page = page;
+  constructor(checkAuth, cardMessages) {
+    this.checkAuth = checkAuth;
+    this.cardMessages = cardMessages;
   }
 
-  renderIcon() {
-    const iconCard = document.querySelector('.card__icon');
-    const keyWordCard = document.querySelector('.card__keyword');
+  renderIcon(page) {
+    const iconCard = document.querySelectorAll('.card__icon');
+    const keyWordCard = document.querySelectorAll('.card__keyword');
+    const messageText = document.querySelectorAll('.card__message-text');
 
-    if(this.page === 'main') {
-      keyWordCard.classList.remove('card__keyword_show');
-      iconCard.classList.remove('card__icon_delete');
-      iconCard.classList.add('card__icon_bookmark');
+    if(page === 'main') {
+      keyWordCard.forEach((elem) => {
+        elem.classList.remove('card__keyword_show');
+      });
+
+      iconCard.forEach((elem) => {
+        elem.classList.remove('card__icon_delete_show');
+        elem.classList.add('card__icon_bookmark_show');
+
+      });
+
+      messageText.forEach((elem) => {
+        if(!this.checkAuth()) {
+          elem.textContent = this.cardMessages.notAuth;
+        } else {
+          elem.textContent = this.cardMessages.saveArticle;
+        }
+      })
     } else {
-      iconCard.classList.remove('card__icon_bookmark');
-      keyWordCard.classList.add('card__keyword_show');
-      iconCard.classList.add('card__icon_delete');
+      keyWordCard.forEach((elem) => {
+        elem.classList.add('card__keyword_show');
+      });
+
+      iconCard.forEach((elem) => {
+        elem.classList.add('card__icon_delete_show');
+        elem.classList.remove('card__icon_bookmark_show');
+      });
+
+      messageText.forEach((elem) => {
+        elem.textContent = this.cardMessages.removeArticle;
+      })
     }
   }
 }

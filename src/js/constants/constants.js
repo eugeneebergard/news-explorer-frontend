@@ -21,11 +21,18 @@ const errorSearchMessages = {
     text: 'Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз'
   },
 }
+
+const cardMessages = {
+  notAuth: "Войдите, чтобы сохранять статьи",
+  saveArticle: "Сохранить статью",
+  removeArticle: "Убрать из сохранённых"
+}
+
 // Набор опций для API запросов
 const options = {
   baseUrl: NODE_ENV === 'development' ? 'http://api.news-explorer-ee.tk' : 'https://api.news-explorer-ee.tk',
 };
 
 module.exports = {
-  validMessages, errorApiMessages, errorSearchMessages, options,
+  validMessages, errorApiMessages, errorSearchMessages, cardMessages, options,
 };

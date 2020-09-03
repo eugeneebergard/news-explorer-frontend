@@ -1,11 +1,14 @@
 import '../css/articles.css';
 
-const { checkAuth } = require('./utils/utils');
+const { checkAuth, callRenderIcons, callGetArticles } = require('./utils/utils');
 
 const buttonOpenMenu = document.querySelector('.header__mobile-menu_open');
 const buttonCloseMenu = document.querySelector('.header__mobile-menu_close');
 
+
 const mobileMenu = document.querySelector('.header__mobile-menu');
+
+const page = 'articles';
 
 buttonOpenMenu.addEventListener('click', () => {
   mobileMenu.classList.add('header__mobile-menu_show');
@@ -20,3 +23,5 @@ function checkUserAuth() {
 }
 
 checkUserAuth();
+callGetArticles();
+callRenderIcons(page);

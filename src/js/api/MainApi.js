@@ -7,9 +7,7 @@ export default class Api {
   }
 
   signup(user) {
-    const { email } = user;
-    const { password } = user;
-    const { name } = user;
+    const { email, password, name } = user;
 
     return fetch(`${this.options.baseUrl}/signup`, {
       method: 'POST',
@@ -39,8 +37,7 @@ export default class Api {
   }
 
   signin(user) {
-    const { email } = user;
-    const { password } = user;
+    const { email, password } = user;
 
     return fetch(`${this.options.baseUrl}/signin`, {
       method: 'POST',
@@ -84,7 +81,10 @@ export default class Api {
 
   getArticles() {
     return fetch(`${this.options.baseUrl}/articles`, {
-      headers: this.options.headers,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('jwtToken')}`,
+      },
     })
       .then((res) => {
         if (res.ok) return res.json();
@@ -93,10 +93,23 @@ export default class Api {
       });
   }
 
-  createArticle() {
+  createArticle(card) {
+    const { keyword, title, text, date, source, link, image } = card;
     return fetch(`${this.options.baseUrl}/articles`, {
       method: 'POST',
-      headers: this.options.headers,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('jwtToken')}`,
+      },
+      body: JSON.stringify({
+        keyword,
+        title,
+        text,
+        date,
+        source,
+        link,
+        image
+      }),
     })
       .then((res) => {
         if (res.ok) return res.json();
@@ -106,9 +119,15 @@ export default class Api {
   }
 
   removeArticle(id) {
-    return fetch(`${this.options.baseUrl}/articles${id}`, {
+    return fetch(`${this.options.baseUrl}/articles/${id}`, {
       method: 'DELETE',
-      headers: this.options.headers,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('jwtToken')}`,
+      },
+      body: JSON.stringify({
+        id
+      }),
     })
       .then((res) => {
         if (res.ok) return res.json();

@@ -1,3 +1,7 @@
+@import url('./_show/card__icon_bookmark_show.css');
+@import url('./_clicked/card__icon_bookmark_clicked.css');
+
 .card__icon_bookmark {
     background-image: url('../../../../images/bookmark.svg');
+    display: none;
 }

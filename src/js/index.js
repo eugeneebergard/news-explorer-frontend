@@ -5,9 +5,9 @@ import Popup from './components/Popup';
 import Form from './components/Form';
 import Header from './components/Header';
 // Импорт констант
-const { validMessages, errorApiMessages, options } = require('./constants/constants');
+const { validMessages } = require('./constants/constants');
 // Импорт утилит
-const { checkAuth, signup, signin, signout, searchNews, callShowMore } = require('./utils/utils');
+const { checkAuth, signup, signin, signout, searchNews, callShowMore, callRenderIcons } = require('./utils/utils');
 
 
 // Обращение к DOM дереву
@@ -171,13 +171,16 @@ buttonSearch.addEventListener('click', (event) => {
 
   const keyWord = inputSearch.value
 
-  if (keyWord && keyWord !== '' )  searchNews(keyWord, preloader);
+  if (keyWord && keyWord !== '' )  {
+    searchNews(keyWord, preloader);
+  }
 });
 
 // Кнопка показать больше
 buttonResult.addEventListener('click', (event) => {
   event.preventDefault();
   callShowMore();
+  callRenderIcons(page);
 });
 
 // Выход из аккаунта десктопной версии

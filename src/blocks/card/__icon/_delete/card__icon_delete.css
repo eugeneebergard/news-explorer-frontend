@@ -1,3 +1,6 @@
-.card__icon_delete {
+@import url('./_show/card__icon_delete_show.css');
+
+.card__icon.card__icon_delete {
     background-image: url('../../../../images/trash.svg');
+    display: none;
 }
