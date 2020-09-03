@@ -7,7 +7,7 @@ import Header from './components/Header';
 // Импорт констант
 const { validMessages, errorApiMessages, options } = require('./constants/constants');
 // Импорт утилит
-const { checkAuth, signup, signin, signout, searchNews, callShowMore, hideResult } = require('./utils/utils');
+const { checkAuth, signup, signin, signout, searchNews, callShowMore } = require('./utils/utils');
 
 
 // Обращение к DOM дереву
@@ -76,18 +76,22 @@ const stateHeader = new Header(headersElements, checkAuth);
 
 // Слушатели событий
 
+
+// Вызов попапа с авторизацией из мобильного меню
 buttonOpenAuthMobile.addEventListener('click', () => {
   formValidatorAuth.setEventListeners();
   formValidatorAuth.setSubmitButtonStateDisactive();
   statePopupAuth.open();
 });
 
+// Вызов попапа с авторизацией из десктопного меню
 buttonOpenAuthDesktop.addEventListener('click', () => {
   formValidatorAuth.setEventListeners();
   formValidatorAuth.setSubmitButtonStateDisactive();
   statePopupAuth.open();
 });
 
+// Переход с попапа авторизации к попапу регистрации
 popupLinkSignup.addEventListener('click', () => {
   statePopupAuth.close();
   formValidatorSignup.setEventListeners();
@@ -95,6 +99,7 @@ popupLinkSignup.addEventListener('click', () => {
   statePopupSignup.open();
 });
 
+// Переход с попапа регистрации на попап авторизации
 popupLinkAuthFromSignup.addEventListener('click', () => {
   statePopupSignup.close();
   formValidatorAuth.setEventListeners();
@@ -102,35 +107,42 @@ popupLinkAuthFromSignup.addEventListener('click', () => {
   statePopupAuth.open();
 });
 
+// Переход с попапа после регистрации на попап авторизации
 popupLinkAuthFromSuccess.addEventListener('click', () => {
   statePopupSuccess.close();
   statePopupAuth.open();
 });
 
+// Закрыть попап авторизации
 buttonCloseAuth.addEventListener('click', () => {
   statePopupAuth.close();
   formValidatorAuth.resetAllErrors();
   formAuth.reset();
 });
 
+// Закрыть попап регистрации
 buttonCloseSignup.addEventListener('click', () => {
   statePopupSignup.close();
   formValidatorSignup.resetAllErrors();
   formSignup.reset();
 });
 
+// Закрыть уведомление об успешной регистрации
 buttonCloseSuccess.addEventListener('click', () => {
   statePopupSuccess.close();
 });
 
+// Открыть мобильное меню
 buttonOpenMenu.addEventListener('click', () => {
   stateHeader.showMenu();
 });
 
+// Закрыть мобильное меню
 buttonCloseMenu.addEventListener('click', () => {
   stateHeader.hideMenu();
 });
 
+// Кнопка регистрации
 submitSignup.addEventListener('click', (event) => {
   event.preventDefault();
 
@@ -142,6 +154,7 @@ submitSignup.addEventListener('click', (event) => {
   signup(user, statePopupSignup, formSignup, statePopupSuccess);
 });
 
+// Кнопка авторизации
 submitAuth.addEventListener('click', (event) => {
   event.preventDefault();
 
@@ -152,27 +165,28 @@ submitAuth.addEventListener('click', (event) => {
   signin(user, statePopupAuth, formAuth)
 });
 
+// Поиск новостей
 buttonSearch.addEventListener('click', (event) => {
   event.preventDefault();
 
   const keyWord = inputSearch.value
 
-  if (keyWord && keyWord !== '' )  {
-    hideResult();
-    preloader.classList.add('preloader_show');
-    searchNews(keyWord, preloader);
-  }
+  if (keyWord && keyWord !== '' )  searchNews(keyWord, preloader);
 });
 
+// Кнопка показать больше
 buttonResult.addEventListener('click', (event) => {
   event.preventDefault();
-  newsCard.renderIcon();
   callShowMore();
 });
 
+// Выход из аккаунта десктопной версии
 buttonLogoutDesktop.addEventListener('click', () => signout());
 
+// Выход из аккаунта мобильной версии
 buttonLogoutMobile.addEventListener('click', () => signout());
 
+
 console.log(localStorage)
+// Рендер хедера
 stateHeader.render();

@@ -44,7 +44,6 @@ export default class NewsCardList {
 
   addCard() {
     // Вырезаем 3 карточки из массива
-
     const actualArticles = this.articlesArray.splice(0, 3);
     console.log(actualArticles)
     actualArticles.forEach((article) => {
@@ -63,16 +62,15 @@ export default class NewsCardList {
         // Создаём разметку карточки
         const createdCard = this.createCard(card);
         // Проверяем, первая ли карточка и отрисовываем её
-        if (this.newCard) {
-          this.cardList.insertBefore(createdCard, this.cardList.firstChild);
-        } else {
-          this.cardList.appendChild(createdCard);
-        }
+        if (this.newCard) this.cardList.insertBefore(createdCard, this.cardList.firstChild);
+        else this.cardList.appendChild(createdCard);
+
         this.newCard = false;
     });
   }
 
   createCard(card) {
+    // Создаем разметку карточки
     this.card = card;
     this.cardContainer = document.createElement('div');
     this.cardContainer.classList.add('card');
@@ -102,6 +100,7 @@ export default class NewsCardList {
     return this.cardContainer;
   }
 
+  // Очистить блок результатов от карточек
   _clearResult() {
     if(this.cardList.firstChild) {
       while(this.cardList.firstChild) {
