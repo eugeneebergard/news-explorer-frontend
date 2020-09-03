@@ -58,7 +58,7 @@ export default class NewsCardList {
     let actualArticles = [];
 
     if(page === 'main') actualArticles = this.articlesArray.splice(0, 3);
-    else actualArticles = this.articlesArray.splice(0, this.articlesArray.length);
+    else actualArticles = this.articlesArray.reverse();
 
     console.log(actualArticles)
     actualArticles.forEach((article) => {
@@ -143,19 +143,19 @@ export default class NewsCardList {
     }
   }
 
-  saveCard(event) {
+  saveCard(event, card) {
     if(this.checkAuth()) {
       const clickCard = event.target.closest('.card');
       const btn = clickCard.querySelector('.card__icon_bookmark')
       btn.classList.add('card__icon_bookmark_clicked');
       const options = {
-        keyword: this.card.keyword,
-        title: this.card.title,
-        text: this.card.text,
-        date: this.card.date,
-        source: this.card.source,
-        image: this.card.image,
-        link: this.card.link,
+        keyword: card.keyword,
+        title: card.title,
+        text: card.text,
+        date: card.date,
+        source: card.source,
+        image: card.image,
+        link: card.link,
       }
       this.mainApi.createArticle(options)
         .then((res) => {
@@ -168,10 +168,10 @@ export default class NewsCardList {
     }
   }
 
-  deleteCard(event) {
-    console.log(this.card);
+  deleteCard(event, card) {
+    console.log(card);
     const clickCard = event.target.closest('.card');
-    this.mainApi.removeArticle(this.card.cardId)
+    this.mainApi.removeArticle(card.cardId)
       .then((res) => {
         this.removeEventListeners();
         clickCard.remove();
@@ -196,11 +196,12 @@ export default class NewsCardList {
   }
 
   setEventListeners() {
-    console.log(this.card);
+    let card = this.card
+
     this
       .cardContainer
       .querySelector('.card__icon_bookmark')
-      .addEventListener('click', () => this.saveCard(event));
+      .addEventListener('click', () => this.saveCard(event, card));
     this
       .cardContainer
       .querySelector('.card__icon_bookmark')
@@ -220,7 +221,7 @@ export default class NewsCardList {
     this
       .cardContainer
       .querySelector('.card__icon_delete')
-      .addEventListener('click', () => this.deleteCard(event));
+      .addEventListener('click', () => this.deleteCard(event, card));
   }
 
   removeEventListeners() {
