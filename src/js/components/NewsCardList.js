@@ -105,7 +105,7 @@ export default class NewsCardList {
     this.cardContainer.insertAdjacentHTML(
       'beforeend',
 
-      `<a class="link" href="${this.card.link}" target="_blank">
+      `
           <div class="card__heading">
             <div class="card__keyword">
               <p>${this.card.keyword}</p>
@@ -117,15 +117,14 @@ export default class NewsCardList {
             <button class="card__icon card__icon_delete"></button>
             <img class="card__image" alt="К сожалению, картинка убежала с карточки :(" src="${this.card.image}">
           </div>
-          <div class="card__content">
+          <a class="card__content" href="${this.card.link}" target="_blank">
             <p class="card__data">${this.correctDate(this.card.date)}</p>
             <h3 class="card__title">${this.card.title}</h3>
             <div class="card__description">
               <p class="card__text">${this.card.text}</p>
             </div>
             <span class="card__publisher">${this.card.source}</span>
-          </div>
-        </a>`,
+          </a>`,
     );
 
     this._setEventListeners();
@@ -157,13 +156,11 @@ export default class NewsCardList {
         link: card.link,
       }
       this.mainApi.createArticle(options)
-        .then((res) => {
+        .then(() => {
           btn.setAttribute('disabled', 'true');
-          console.log(res);
+          this._hideMessage(event);
         })
-        .catch((err) => {
-          console.log(err);
-        });
+        .catch((err) => console.log(err));
     }
   }
 
@@ -173,12 +170,9 @@ export default class NewsCardList {
       .then((res) => {
         this._removeEventListeners();
         clickCard.remove();
-        console.log(res);
         location.reload();
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((err) => console.log(err));
 
   }
 

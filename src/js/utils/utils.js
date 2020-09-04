@@ -107,12 +107,8 @@ export function callGetArticles() {
       newsCardList.renderResults(res, 'articles', '');
       stateSavedArticles.render(res.data);
     })
-    .then(() => {
-      callRenderIcons('articles');
-    })
-    .catch((err) => {
-      console.log(err);
-    })
+    .then(() => callRenderIcons('articles'))
+    .catch((err) => console.log(err))
 }
 // Редирект
 export function redirect() {

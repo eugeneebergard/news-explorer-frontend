@@ -14,6 +14,9 @@ const titleUserName = document.querySelector('.saved-articles__user-name');
 const articlesLength = document.querySelector('.saved-articles__articles-length');
 const keywords = document.querySelector('.saved-articles__keywords');
 const keywordsOthers = document.querySelector('.saved-articles__others');
+const description = document.querySelector('.saved-articles__description');
+const howMatch = document.querySelector('.saved-articles__how-match');
+const savedArticlesAnd = document.querySelector('.saved-articles__and');
 // Пользователь
 const userName = document.querySelectorAll('.user-name');
 
@@ -21,7 +24,10 @@ const savedArticlesElements = {
   userName: titleUserName,
   length: articlesLength,
   keywords: keywords,
-  others: keywordsOthers
+  others: keywordsOthers,
+  description: description,
+  howMatch: howMatch,
+  and: savedArticlesAnd
 }
 
 const validMessages = {

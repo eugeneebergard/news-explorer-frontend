@@ -164,7 +164,5 @@ headersElements.buttonLogoutDesktop.addEventListener('click', () => signout());
 // Выход из аккаунта мобильной версии
 headersElements.buttonLogoutMobile.addEventListener('click', () => signout());
 
-
-console.log(localStorage)
 // Рендер хедера
 stateHeader.render();
