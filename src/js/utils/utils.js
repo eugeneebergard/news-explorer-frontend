@@ -3,6 +3,7 @@ import MainApi from '../api/MainApi';
 import NewsApi from '../api/NewsApi';
 import NewsCardList from '../components/NewsCardList';
 import NewsCard from '../components/NewsCard';
+import SavedArticles from '../components/SavedArticles';
 // Места вывода ошибок popup'a и поиска
 const errorAuth = document.getElementById('error-auth');
 const errorSignup = document.getElementById('error-signup');
@@ -13,12 +14,13 @@ const cardList = document.querySelector('.result__list');
 const notFound = document.querySelector('.not-found');
 const result = document.querySelector('.result');
 // Импорт констант
-const { options, errorApiMessages, errorSearchMessages, cardMessages } = require('../constants/constants');
+const { savedArticlesElements ,options, errorApiMessages, errorSearchMessages, cardMessages } = require('../constants/constants');
 // Объявление методов
 const mainApi = new MainApi(options, errorApiMessages, errorAuth, errorSignup);
 const newsApi = new NewsApi();
 const newsCardList = new NewsCardList(cardList, notFound, result, correctDate, mainApi, checkAuth);
 const newCard = new NewsCard(checkAuth, cardMessages);
+const stateSavedArticles = new SavedArticles(savedArticlesElements);
 
 // Проверка авторизации
 export function checkAuth() {
@@ -34,9 +36,7 @@ export function signup(user, statePopupSignup, formSignup, statePopupSuccess) {
         formSignup.reset();
         statePopupSuccess.open();
     })
-    .catch((err) => {
-      console.log(err)
-    });
+    .catch((err) => console.log(err));
 }
 
 // Логика при авторизации
@@ -105,6 +105,7 @@ export function callGetArticles() {
   mainApi.getArticles()
     .then((res) => {
       newsCardList.renderResults(res, 'articles', '');
+      stateSavedArticles.render(res.data);
     })
     .then(() => {
       callRenderIcons('articles');
@@ -112,6 +113,10 @@ export function callGetArticles() {
     .catch((err) => {
       console.log(err);
     })
+}
+// Редирект
+export function redirect() {
+  if(!checkAuth()) return document.location.href = './';
 }
 
 // Получить имя пользователя

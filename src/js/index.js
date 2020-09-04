@@ -5,10 +5,9 @@ import Popup from './components/Popup';
 import Form from './components/Form';
 import Header from './components/Header';
 // Импорт констант
-const { validMessages } = require('./constants/constants');
+const { validMessages, headersElements } = require('./constants/constants');
 // Импорт утилит
 const { checkAuth, signup, signin, signout, searchNews, callShowMore, callRenderIcons } = require('./utils/utils');
-
 
 // Обращение к DOM дереву
 
@@ -26,12 +25,6 @@ const submitSignup = document.querySelector('.popup__button_type_signup');
 const popupLinkSignup = document.querySelector('.popup__link_signup');
 const popupLinkAuthFromSignup = document.querySelector('.popup__link_auth_from-signup');
 const popupLinkAuthFromSuccess = document.querySelector('.popup__link_auth_from-success');
-// Кнопки аутентификации двух версий
-const buttonOpenAuthDesktop = document.getElementById('auth-desk');
-const buttonOpenAuthMobile = document.getElementById('auth-mobile');
-// Кнопки выхода двух версий
-const buttonLogoutDesktop = document.getElementById('logout-desk');
-const buttonLogoutMobile = document.getElementById('logout-mobile');
 // Кнопки для закрытия popups
 const buttonCloseAuth = document.querySelector('.popup__close_type_auth');
 const buttonCloseSignup = document.querySelector('.popup__close_type_signup');
@@ -39,30 +32,12 @@ const buttonCloseSuccess = document.querySelector('.popup__close_type_success');
 // Кнопки для открытия и закрытия меню в мобильной версии
 const buttonOpenMenu = document.querySelector('.header__mobile-menu_open');
 const buttonCloseMenu = document.querySelector('.header__mobile-menu_close');
-// Меню мобильной версии
-const mobileMenu = document.querySelector('.header__mobile-menu');
-// Ссылка на articles двух версий
-const linkArticlesDesktop = document.getElementById('articles-desk');
-const linkArticlesMobile = document.getElementById('articles-mobile');
-// Пользователь
-const userName = document.querySelectorAll('.user-name');
 // Элементы поиска новостей
 const buttonSearch = document.getElementById('search-button');
 const inputSearch = document.getElementById('search-input');
 const buttonResult = document.querySelector('.result__button');
 // Прелоадер
 const preloader = document.querySelector('.preloader');
-
-const headersElements = {
-  mobileMenu: mobileMenu,
-  linkArticlesDesktop: linkArticlesDesktop,
-  linkArticlesMobile: linkArticlesMobile,
-  buttonLogoutDesktop: buttonLogoutDesktop,
-  buttonLogoutMobile: buttonLogoutMobile,
-  buttonOpenAuthDesktop: buttonOpenAuthDesktop,
-  buttonOpenAuthMobile: buttonOpenAuthMobile,
-  userName: userName,
-}
 
 const page = 'main';
 
@@ -72,20 +47,20 @@ const statePopupSignup = new Popup(popupSignup);
 const statePopupSuccess = new Popup(popupSuccess);
 const formValidatorAuth = new Form(formAuth, submitAuth, validMessages);
 const formValidatorSignup = new Form(formSignup, submitSignup, validMessages);
-const stateHeader = new Header(headersElements, checkAuth);
+const stateHeader = new Header(headersElements, checkAuth, page);
 
 // Слушатели событий
 
 
 // Вызов попапа с авторизацией из мобильного меню
-buttonOpenAuthMobile.addEventListener('click', () => {
+headersElements.buttonOpenAuthMobile.addEventListener('click', () => {
   formValidatorAuth.setEventListeners();
   formValidatorAuth.setSubmitButtonStateDisactive();
   statePopupAuth.open();
 });
 
 // Вызов попапа с авторизацией из десктопного меню
-buttonOpenAuthDesktop.addEventListener('click', () => {
+headersElements.buttonOpenAuthDesktop.addEventListener('click', () => {
   formValidatorAuth.setEventListeners();
   formValidatorAuth.setSubmitButtonStateDisactive();
   statePopupAuth.open();
@@ -184,10 +159,10 @@ buttonResult.addEventListener('click', (event) => {
 });
 
 // Выход из аккаунта десктопной версии
-buttonLogoutDesktop.addEventListener('click', () => signout());
+headersElements.buttonLogoutDesktop.addEventListener('click', () => signout());
 
 // Выход из аккаунта мобильной версии
-buttonLogoutMobile.addEventListener('click', () => signout());
+headersElements.buttonLogoutMobile.addEventListener('click', () => signout());
 
 
 console.log(localStorage)

@@ -60,7 +60,6 @@ export default class NewsCardList {
     if(page === 'main') actualArticles = this.articlesArray.splice(0, 3);
     else actualArticles = this.articlesArray.reverse();
 
-    console.log(actualArticles)
     actualArticles.forEach((article) => {
       let card = {};
       //Выводим данные из карточки
@@ -129,7 +128,7 @@ export default class NewsCardList {
         </a>`,
     );
 
-    this.setEventListeners();
+    this._setEventListeners();
 
     return this.cardContainer;
   }
@@ -143,7 +142,7 @@ export default class NewsCardList {
     }
   }
 
-  saveCard(event, card) {
+  _saveCard(event, card) {
     if(this.checkAuth()) {
       const clickCard = event.target.closest('.card');
       const btn = clickCard.querySelector('.card__icon_bookmark')
@@ -159,8 +158,8 @@ export default class NewsCardList {
       }
       this.mainApi.createArticle(options)
         .then((res) => {
-          console.log(res);
           btn.setAttribute('disabled', 'true');
+          console.log(res);
         })
         .catch((err) => {
           console.log(err);
@@ -168,14 +167,14 @@ export default class NewsCardList {
     }
   }
 
-  deleteCard(event, card) {
-    console.log(card);
+  _deleteCard(event, card) {
     const clickCard = event.target.closest('.card');
     this.mainApi.removeArticle(card.cardId)
       .then((res) => {
-        this.removeEventListeners();
+        this._removeEventListeners();
         clickCard.remove();
         console.log(res);
+        location.reload();
       })
       .catch((err) => {
         console.log(err);
@@ -183,71 +182,71 @@ export default class NewsCardList {
 
   }
 
-  showMessage(event) {
+  _showMessage(event) {
     const clickCard = event.target.closest('.card');
     const message = clickCard.querySelector('.card__message');
     message.classList.add('card__message_show');
   }
 
-  hideMessage(event) {
+  _hideMessage(event) {
     const clickCard = event.target.closest('.card');
     const message = clickCard.querySelector('.card__message');
     message.classList.remove('card__message_show');
   }
 
-  setEventListeners() {
+  _setEventListeners() {
     let card = this.card
 
     this
       .cardContainer
       .querySelector('.card__icon_bookmark')
-      .addEventListener('click', () => this.saveCard(event, card));
+      .addEventListener('click', () => this._saveCard(event, card));
     this
       .cardContainer
       .querySelector('.card__icon_bookmark')
-      .addEventListener('mouseover', () => this.showMessage(event));
+      .addEventListener('mouseover', () => this._showMessage(event));
     this
       .cardContainer
       .querySelector('.card__icon_bookmark')
-      .addEventListener('mouseout', () => this.hideMessage(event));
+      .addEventListener('mouseout', () => this._hideMessage(event));
     this
       .cardContainer
       .querySelector('.card__icon_delete')
-      .addEventListener('mouseover', () => this.showMessage(event));
+      .addEventListener('mouseover', () => this._showMessage(event));
     this
       .cardContainer
       .querySelector('.card__icon_delete')
-      .addEventListener('mouseout', () => this.hideMessage(event));
+      .addEventListener('mouseout', () => this._hideMessage(event));
     this
       .cardContainer
       .querySelector('.card__icon_delete')
-      .addEventListener('click', () => this.deleteCard(event, card));
+      .addEventListener('click', () => this._deleteCard(event, card));
   }
 
-  removeEventListeners() {
+  _removeEventListeners() {
     this
       .cardContainer
       .querySelector('.card__icon_bookmark')
-      .removeEventListener('click', () => this.saveCard(event));
+      .removeEventListener('click', () => this._saveCard(event));
     this
       .cardContainer
       .querySelector('.card__icon_bookmark')
-      .removeEventListener('mouseover', () => this.showMessage(event));
+      .removeEventListener('mouseover', () => this._showMessage(event));
     this
       .cardContainer
       .querySelector('.card__icon_bookmark')
-      .removeEventListener('mouseout', () => this.hideMessage(event));
+      .removeEventListener('mouseout', () => this._hideMessage(event));
     this
       .cardContainer
       .querySelector('.card__icon_delete')
-      .removeEventListener('mouseover', () => this.showMessage(event));
+      .removeEventListener('mouseover', () => this._showMessage(event));
     this
       .cardContainer
       .querySelector('.card__icon_delete')
-      .removeEventListener('mouseout', () => this.hideMessage(event));
+      .removeEventListener('mouseout', () => this._hideMessage(event));
     this
       .cardContainer
       .querySelector('.card__icon_delete')
-      .removeEventListener('click', () => this.deleteCard(event));
+      .removeEventListener('click', () => this._deleteCard(event));
   }
 }
