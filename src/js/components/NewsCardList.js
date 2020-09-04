@@ -1,11 +1,12 @@
 export default class NewsCardList {
-  constructor(cardList, notFound, result, correctDate, mainApi, checkAuth) {
+  constructor(cardList, notFound, result, correctDate, mainApi, checkAuth, btnResult) {
     this.cardList = cardList;
     this.notFound = notFound;
     this.result = result;
     this.correctDate = correctDate;
     this.mainApi = mainApi;
     this.checkAuth = checkAuth;
+    this.btnResult = btnResult;
   }
 
   renderResults(news, page, keyWord) {
@@ -57,8 +58,15 @@ export default class NewsCardList {
   addCard(page) {
     let actualArticles = [];
 
-    if(page === 'main') actualArticles = this.articlesArray.splice(0, 3);
-    else actualArticles = this.articlesArray.reverse();
+
+    if(page === 'main')  {
+      actualArticles = this.articlesArray.splice(0, 3);
+
+      if(this.articlesArray.length <= 3) this.btnResult.classList.add('result__button_hide');
+      else this.btnResult.classList.remove('result__button_hide');
+    } else  {
+      actualArticles = this.articlesArray.reverse();
+    }
 
     actualArticles.forEach((article) => {
       let card = {};
@@ -167,13 +175,12 @@ export default class NewsCardList {
   _deleteCard(event, card) {
     const clickCard = event.target.closest('.card');
     this.mainApi.removeArticle(card.cardId)
-      .then((res) => {
+      .then(() => {
         this._removeEventListeners();
         clickCard.remove();
         location.reload();
       })
       .catch((err) => console.log(err));
-
   }
 
   _showMessage(event) {

@@ -4,6 +4,7 @@ import NewsApi from '../api/NewsApi';
 import NewsCardList from '../components/NewsCardList';
 import NewsCard from '../components/NewsCard';
 import SavedArticles from '../components/SavedArticles';
+
 // Места вывода ошибок popup'a и поиска
 const errorAuth = document.getElementById('error-auth');
 const errorSignup = document.getElementById('error-signup');
@@ -14,11 +15,11 @@ const cardList = document.querySelector('.result__list');
 const notFound = document.querySelector('.not-found');
 const result = document.querySelector('.result');
 // Импорт констант
-const { savedArticlesElements ,options, errorApiMessages, errorSearchMessages, cardMessages } = require('../constants/constants');
+const { savedArticlesElements ,options, errorApiMessages, errorSearchMessages, cardMessages, buttonResult } = require('../constants/constants');
 // Объявление методов
 const mainApi = new MainApi(options, errorApiMessages, errorAuth, errorSignup);
 const newsApi = new NewsApi();
-const newsCardList = new NewsCardList(cardList, notFound, result, correctDate, mainApi, checkAuth);
+const newsCardList = new NewsCardList(cardList, notFound, result, correctDate, mainApi, checkAuth, buttonResult );
 const newCard = new NewsCard(checkAuth, cardMessages);
 const stateSavedArticles = new SavedArticles(savedArticlesElements);
 

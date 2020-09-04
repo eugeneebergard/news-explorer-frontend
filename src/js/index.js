@@ -5,7 +5,7 @@ import Popup from './components/Popup';
 import Form from './components/Form';
 import Header from './components/Header';
 // Импорт констант
-const { validMessages, headersElements } = require('./constants/constants');
+const { validMessages, headersElements, buttonResult } = require('./constants/constants');
 // Импорт утилит
 const { checkAuth, signup, signin, signout, searchNews, callShowMore, callRenderIcons } = require('./utils/utils');
 
@@ -35,7 +35,6 @@ const buttonCloseMenu = document.querySelector('.header__mobile-menu_close');
 // Элементы поиска новостей
 const buttonSearch = document.getElementById('search-button');
 const inputSearch = document.getElementById('search-input');
-const buttonResult = document.querySelector('.result__button');
 // Прелоадер
 const preloader = document.querySelector('.preloader');
 

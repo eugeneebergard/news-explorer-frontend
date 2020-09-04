@@ -19,6 +19,8 @@ const howMatch = document.querySelector('.saved-articles__how-match');
 const savedArticlesAnd = document.querySelector('.saved-articles__and');
 // Пользователь
 const userName = document.querySelectorAll('.user-name');
+// Кнопка показать больше
+const buttonResult = document.querySelector('.result__button');
 
 const savedArticlesElements = {
   userName: titleUserName,
@@ -78,5 +80,5 @@ const headersElements = {
 }
 
 module.exports = {
-  savedArticlesElements, validMessages, errorApiMessages, errorSearchMessages, cardMessages, options, headersElements
+  savedArticlesElements, validMessages, errorApiMessages, errorSearchMessages, cardMessages, options, headersElements, buttonResult
 };
