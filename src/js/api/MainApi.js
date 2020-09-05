@@ -10,6 +10,7 @@ export default class Api {
     const { email, password, name } = user;
 
     return fetch(`${this.options.baseUrl}/signup`, {
+      credentials: 'include',
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -40,6 +41,7 @@ export default class Api {
     const { email, password } = user;
 
     return fetch(`${this.options.baseUrl}/signin`, {
+      credentials: 'include',
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -67,6 +69,7 @@ export default class Api {
 
   getUserData() {
     return fetch(`${this.options.baseUrl}/users/me`, {
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${localStorage.getItem('jwtToken')}`,
@@ -81,6 +84,7 @@ export default class Api {
 
   getArticles() {
     return fetch(`${this.options.baseUrl}/articles`, {
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${localStorage.getItem('jwtToken')}`,
@@ -96,6 +100,7 @@ export default class Api {
   createArticle(card) {
     const { keyword, title, text, date, source, link, image } = card;
     return fetch(`${this.options.baseUrl}/articles`, {
+      credentials: 'include',
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -120,6 +125,7 @@ export default class Api {
 
   removeArticle(id) {
     return fetch(`${this.options.baseUrl}/articles/${id}`, {
+      credentials: 'include',
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
