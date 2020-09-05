@@ -23,8 +23,6 @@ export default class NewsCard {
       messageText.forEach((elem) => {
         if(!this.checkAuth()) {
           elem.textContent = this.cardMessages.notAuth;
-        } else {
-          elem.textContent = this.cardMessages.saveArticle;
         }
       })
     } else {

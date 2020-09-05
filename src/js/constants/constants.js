@@ -58,7 +58,6 @@ const errorSearchMessages = {
 
 const cardMessages = {
   notAuth: "Войдите, чтобы сохранять статьи",
-  saveArticle: "Сохранить статью",
   removeArticle: "Убрать из сохранённых"
 }
 
