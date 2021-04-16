@@ -1,9 +1,19 @@
-.header__button_auth {
+@import url('./_active/header__button_auth_active.css');
+
+.header__button.header__button_auth {
+    display: none;
     width: 176px;
 }
 
 @media (max-width: 1023px) {
-    .header__button_auth {
+    .header__button.header__button_auth {
         width: 152px;
+    }
+}
+
+@media (max-width: 700px) {
+    .header__button.header__button_auth {
+        height: 56px;
+        width: 288px;
     }
 }

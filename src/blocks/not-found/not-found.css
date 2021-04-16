@@ -1,12 +1,13 @@
 @import url('./__heading/not-found__heading.css');
 @import url('./__text/not-found__text.css');
 @import url('./__container/not-found__container.css');
+@import url('./_show/not-found_show.css');
 
 .not-found {
     width: 100%;
     background-color: #F5F6F7;
     min-height: 374px;
-    display: flex;
     justify-content: center;
     align-items: center;
+    display: none;
 }

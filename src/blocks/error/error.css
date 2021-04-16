@@ -1,1 +1,10 @@
 @import url(./_is-active/error_is-active.css);
+@import url(./_form/error_form.css);
+
+.error {
+    font-family: Inter, Arial, sans-serif;
+    color: red;
+    font-size: 12px;
+    line-height: 15px;
+    display: none;
+}

@@ -1,3 +1,5 @@
+@import url('./_show/saved-articles__description_show.css');
+
 .saved-articles__description {
     margin: 0;
     font-family: Roboto;
@@ -6,6 +8,7 @@
     font-size: 18px;
     line-height: 24px;
     color: #1A1B22;
+    display: none;
 }
 
 @media (max-width: 1023px) {

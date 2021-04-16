@@ -1,6 +1,25 @@
 .card__image {
+    height: 272px;
     width: 100%;
     background-size: cover;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    color: black;
+    font-family: Roboto, Arial, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 22px;
+}
+
+@media (max-width: 1023px) {
+    .card__image {
+        height: 150px;
+    }
+}
+
+@media (max-width: 700px) {
+    .card__image {
+        height: 196px;
+    }
 }

@@ -1,7 +1,15 @@
+@import url('./_active/header__button_logout_active.css');
+
 .header__button.header__button_logout {
-    width: 112px;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
-    display: none;
+    padding: 0 19px;
+}
+
+@media (max-width: 700px) {
+    .header__button.header__button_logout {
+        height: 56px;
+        width: 288px;
+    }
 }

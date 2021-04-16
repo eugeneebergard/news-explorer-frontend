@@ -4,6 +4,12 @@
 @import url(__content/card__content.css);
 @import url(__data/card__data.css);
 @import url(__publisher/card__publisher.css);
+@import url(__heading/card__heading.css);
+@import url(__text/card__text.css);
+@import url(__icon/card__icon.css);
+@import url(__keyword/card__keyword.css);
+@import url(__message/card__message.css);
+@import url(__message-text/card__message-text.css);
 
 .card {
     display: block;
@@ -11,7 +17,6 @@
     background-color: #FFFFFF;
     border-radius: 10px;
     position: relative;
-    cursor: pointer;
 }
 
 @media (max-width: 1023px) {

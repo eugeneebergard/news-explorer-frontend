@@ -1,3 +1,5 @@
+@import url('./_hide/result__button_hide.css');
+
 .result__button {
     display: block;
     border: none;

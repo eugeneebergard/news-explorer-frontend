@@ -1,0 +1,34 @@
+@import url(./_show/card__message_show.css);
+
+.card__message {
+    padding: 0 10px;
+    background-color: white;
+    height: 40px;
+    border-radius: 8px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 24px;
+    right: 69px;
+    color: #1A1B22;
+    font-family: Roboto, Arial, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 12px;
+}
+
+@media (max-width: 1023px) {
+    .card__message {
+        top: 8px;
+        right: 57px;
+    }
+}
+
+@media (max-width: 700px) {
+    .card__message {
+        top: 16px;
+        right: 65px;
+    }
+}

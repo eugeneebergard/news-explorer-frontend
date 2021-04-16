@@ -1,0 +1,4 @@
+.card__icon_bookmark.card__icon_bookmark_clicked {
+    background-image: url('../../../../../images/bookmark_clicked.svg');
+    opacity: 1;
+}

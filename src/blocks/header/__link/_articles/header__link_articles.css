@@ -1,1 +1,5 @@
+@import url('./_active/header__link_articles_active.css');
 
+.header__link_articles {
+    display: none;
+}
