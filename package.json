@@ -1,7 +1,7 @@
 {
   "name": "news-explorer-frontend",
   "version": "1.0.0",
-  "description": "Фронтендовая часть проекта News Explorer",
+  "description": "Frontend проекта News Explorer",
   "main": "index.js",
   "scripts": {
     "build": "cross-env NODE_ENV=production rimraf dist && webpack --mode production",
